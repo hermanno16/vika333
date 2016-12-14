@@ -1,9 +1,6 @@
 #include "addcomputerdialog.h"
 #include "ui_addcomputerdialog.h"
-#include <QMessageBox>
-#include <iostream>
-#include <QLineEdit>
-#include <QString>
+
 
 using namespace std;
 
@@ -20,10 +17,39 @@ addComputerDialog::~addComputerDialog()
 }
 
 
-void addComputerDialog::on_computer_Submit_Button_clicked()
+
+
+void addComputerDialog::on_pushButton_add_computer_clicked()
 {
-    //if (Computer_Name_InputBox->text().isEmpty())
-    //{
-        QMessageBox::about(this, "Error", "No, Name Entered");
-    //}
+    QString computerName = ui->computer_Input_Name->text();
+    QString computerYearBuilt = ui->computer_Input_Year_Built->text();
+    QString computerDevelopment = ui->computer_Input_Development->text();
+    QString computerInfo = ui->computer_Add_Info->text();
+    QString computerType = ui->computer_Input_Type->text();
+
+    if (computerName.isEmpty())
+    {
+        QMessageBox::critical (this, "Error", "The Name Cannot Be Empty");
+        return;
+    }
+    else if (computerYearBuilt.isEmpty())
+    {
+        QMessageBox::critical (this, "Error", "The Building Year Cannot Be Empty");
+        return;
+    }
+    else if (computerDevelopment.isEmpty())
+    {
+        QMessageBox::critical (this, "Error", "The Development Cannot Be Empty");
+        return;
+    }
+    else if (computerType.isEmpty())
+    {
+        QMessageBox::critical (this, "Error", "The Type Cannot Be Empty");
+        return;
+    }
+    else
+    {
+        //ath hvort tölvan er til í gagnagrunninum ef ekki adda upplýsingunum
+        return;
+    }
 }

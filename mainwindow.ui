@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>768</width>
-    <height>664</height>
+    <height>354</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -21,10 +21,13 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>0</y>
       <width>771</width>
       <height>551</height>
      </rect>
@@ -298,6 +301,29 @@
         <normaloff>icons/remove.ico</normaloff>icons/remove.ico</iconset>
       </property>
      </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>10</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../icons/1481744709_icon-111-search.ico</normaloff>../icons/1481744709_icon-111-search.ico</iconset>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab_2">
      <attribute name="title">
@@ -472,6 +498,9 @@
       <property name="alignment">
        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
       </property>
+      <property name="placeholderText">
+       <string>Search ...</string>
+      </property>
       <property name="cursorMoveStyle">
        <enum>Qt::LogicalMoveStyle</enum>
       </property>
@@ -554,6 +583,32 @@
       <property name="icon">
        <iconset>
         <normaloff>icons/remove.ico</normaloff>icons/remove.ico</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>10</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color:rgb(255, 255, 255)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>../icons/1481744709_icon-111-search.ico</normaloff>../icons/1481744709_icon-111-search.ico</iconset>
       </property>
      </widget>
     </widget>

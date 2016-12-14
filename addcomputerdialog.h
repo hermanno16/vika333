@@ -7,6 +7,8 @@
 #include <QString>
 #include <QStringList>
 #include <QRegularExpression>
+#include <QMessageBox>
+#include <QLineEdit>
 
 
 using namespace std;
@@ -29,6 +31,8 @@ public:
 private slots:
     void on_computer_Submit_Button_clicked();
 
+
+    void on_pushButton_add_computer_clicked();
 
 private:
     Ui::addComputerDialog *ui;

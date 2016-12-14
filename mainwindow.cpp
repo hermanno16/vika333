@@ -131,7 +131,7 @@ void MainWindow::on_dropdown_what_to_look_at_currentTextChanged(const QString &a
 
 void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
 {
-    string userInput = ui->search_box->text().toStdString();
+    string userInput = ui->search_box_computer->text().toStdString();
 
     vector<Computer> computers = _service.searchForComputers(userInput);
     displayComputers(computers);

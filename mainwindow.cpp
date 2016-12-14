@@ -5,18 +5,18 @@
 #include "addscientistdialog.h"
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
-#include "service.h"
-#include <QApplication>
-#include <iostream>
 
 using namespace std;
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+
 {
     ui->setupUi(this);
-    refreshTables();
 
-
+    displayAllScientists();
+    displayAllComputers();
 }
 
 MainWindow::~MainWindow()
@@ -26,7 +26,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::displayAllScientists()
 {
-
     vector<Scientist> scientists = _service.getAllScientistsAtoZ();
     displayScientists(scientists);
 
@@ -34,8 +33,6 @@ void MainWindow::displayAllScientists()
 
 void MainWindow::displayScientists(vector<Scientist> scientists)
 {
-
-
     ui->scientist_table->clearContents();
     ui->scientist_table->setRowCount(scientists.size());
     ui->scientist_table->setColumnHidden(0, true);
@@ -68,7 +65,6 @@ void MainWindow::on_row_clicked()
 }
 void MainWindow::on_search_box_textChanged()
 {
-
     string userInput = ui->search_box->text().toStdString();
 
     vector<Scientist> scientists = _service.searchForScientists(userInput);
@@ -77,16 +73,18 @@ void MainWindow::on_search_box_textChanged()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    /*
+    AddScientistDialog addStudentDialog;
+    addStudentDialog.exec();
+    */
 }
 
-void MainWindow::refreshTables()
+void MainWindow::on_button_add_scientist_clicked()
 {
-    //_service.openDataBase();
-    displayAllScientists();
-    displayAllComputers();
-}
+   AddScientistDialog addScientistDialog;
 
+   addScientistDialog.exec();
+}
 void MainWindow::on_button_scientist_info_clicked()
 {
     ScientistInfoDialog scientistInfoDialog;
@@ -125,16 +123,15 @@ void MainWindow::displayComputers(vector<Computer> computers)
         ui->computer_table->setItem(row, 3, new QTableWidgetItem(yearbuilt));
         ui->computer_table->setItem(row, 4, new QTableWidgetItem(development));
     }
-
 }
 void MainWindow::on_dropdown_what_to_look_at_currentTextChanged(const QString &arg1)
 {
 
 }
 
-void MainWindow::on_search_box_computer_textChanged()
-{    
-    string userInput = ui->search_box_computer->text().toStdString();
+void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
+{
+    string userInput = ui->search_box->text().toStdString();
 
     vector<Computer> computers = _service.searchForComputers(userInput);
     displayComputers(computers);
@@ -151,20 +148,4 @@ void MainWindow::on_button_info_computer_clicked()
    addComputerDialog computerInfoDialog;
 
    int computerInfoReturnValue = computerInfoDialog.exec();
-}
-
-void MainWindow::on_button_add_scientist_clicked()
-{
-    AddScientistDialog addScientistDialog(0);
-    addScientistDialog.setModal(true);
-    addScientistDialog.setWindowTitle("Add Scientist");
-    addScientistDialog.exec();
-    refreshTables();
-}
-
-void MainWindow::on_scientist_table_doubleClicked(const QModelIndex &index)
-{
-    ScientistInfoDialog scientistInfoDialog();
-
-    //scientistInfoDialog.exec();
 }

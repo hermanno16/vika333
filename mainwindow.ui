@@ -90,7 +90,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/Infobox_info_icon.svg.png</normaloff>../icons/Infobox_info_icon.svg.png</iconset>
+        <normaloff>icons/Infobox_info_icon.svg.png</normaloff>icons/Infobox_info_icon.svg.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_add_new_scientist">
@@ -252,7 +252,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/Add.ico</normaloff>../icons/Add.ico</iconset>
+        <normaloff>icons/Add.ico</normaloff>icons/Add.ico</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="button_scientist_edit">
@@ -269,7 +269,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/edit.png</normaloff>../icons/edit.png</iconset>
+        <normaloff>icons/edit.png</normaloff>icons/edit.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="button_scientist_remove">
@@ -286,7 +286,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/remove.ico</normaloff>../icons/remove.ico</iconset>
+        <normaloff>icons/remove.ico</normaloff>icons/remove.ico</iconset>
       </property>
      </widget>
     </widget>
@@ -484,7 +484,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/Infobox_info_icon.svg.png</normaloff>../icons/Infobox_info_icon.svg.png</iconset>
+        <normaloff>icons/Infobox_info_icon.svg.png</normaloff>icons/Infobox_info_icon.svg.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="button_add_computer">
@@ -504,7 +504,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/Add.ico</normaloff>../icons/Add.ico</iconset>
+        <normaloff>icons/Add.ico</normaloff>icons/Add.ico</iconset>
       </property>
       <property name="autoDefault">
        <bool>false</bool>
@@ -527,7 +527,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/edit.png</normaloff>../icons/edit.png</iconset>
+        <normaloff>icons/edit.png</normaloff>icons/edit.png</iconset>
       </property>
      </widget>
      <widget class="QPushButton" name="button_computer_remove">
@@ -544,7 +544,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/remove.ico</normaloff>../icons/remove.ico</iconset>
+        <normaloff>icons/remove.ico</normaloff>icons/remove.ico</iconset>
       </property>
      </widget>
     </widget>

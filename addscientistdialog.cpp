@@ -2,6 +2,7 @@
 #include "ui_addscientistdialog.h"
 #include "service.h"
 #include "dataaccess.h"
+#include "scientist.h"
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
@@ -23,6 +24,8 @@ AddScientistDialog::~AddScientistDialog()
 
 void AddScientistDialog::on_pushButton_add_scientist_clicked()
 {
+
+
     QString name = ui->input_scientist_name->text();
     QString yearOfBirth = ui->input_scientist_year_of_birth->text();
     QString yearOfDeath = ui->input_scientist_year_of_death->text();
@@ -35,6 +38,7 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
     {
         gender = "Female";
     }
+    _service.addScientistToData(name.toStdString(), yearOfBirth.toStdString(), yearOfDeath.toStdString(), gender);
 
     /*
     if(name.isEmpty())
@@ -55,6 +59,6 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
     }
     */
     this->close();
-     _service.addScientistToData(name.toStdString(), yearOfBirth.toStdString(), yearOfDeath.toStdString(), gender);
+
 
 }

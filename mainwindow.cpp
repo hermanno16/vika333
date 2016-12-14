@@ -5,6 +5,7 @@
 #include "addscientistdialog.h"
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
+#include <QModelIndex>
 
 using namespace std;
 
@@ -14,9 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 {
     ui->setupUi(this);
+    refreshTable();
 
-    displayAllScientists();
-    displayAllComputers();
 }
 
 MainWindow::~MainWindow()
@@ -30,6 +30,16 @@ void MainWindow::displayAllScientists()
     displayScientists(scientists);
 
 }
+
+void MainWindow::refreshTable()
+{
+    displayAllScientists();
+    displayAllComputers();
+    ui->button_scientist_remove->setEnabled(false);
+    ui->button_scientist_info->setEnabled(false);
+    ui->button_scientist_edit->setEnabled(false);
+}
+
 
 void MainWindow::displayScientists(vector<Scientist> scientists)
 {
@@ -58,6 +68,8 @@ void MainWindow::displayScientists(vector<Scientist> scientists)
         ui->scientist_table->setItem(row, 3, new QTableWidgetItem(yearofbirth));
         ui->scientist_table->setItem(row, 4, new QTableWidgetItem(yearofdeath));
     }
+
+    currentlyDisplayedScientists = scientists;
 }
 void MainWindow::on_row_clicked()
 {
@@ -84,13 +96,9 @@ void MainWindow::on_button_add_scientist_clicked()
    AddScientistDialog addScientistDialog;
 
    addScientistDialog.exec();
+   refreshTable();
 }
-void MainWindow::on_button_scientist_info_clicked()
-{
-    ScientistInfoDialog scientistInfoDialog;
 
-    scientistInfoDialog.exec();
-}
 void MainWindow::displayAllComputers()
 {
     vector<Computer> computers = _service.getAllComputersAtoZ();
@@ -141,6 +149,7 @@ void MainWindow::on_button_add_computer_clicked()
 {
     addComputerDialog AddComputerDialog;
     int addComputerReturnValue = AddComputerDialog.exec();
+    refreshTable();
 }
 
 void MainWindow::on_button_info_computer_clicked()
@@ -149,3 +158,44 @@ void MainWindow::on_button_info_computer_clicked()
 
    int computerInfoReturnValue = computerInfoDialog.exec();
 }
+
+void MainWindow::on_button_scientist_remove_clicked()
+{
+    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+
+    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+
+
+    _service.removeScientistFromDataBase(currentlySelectedScientist.getID());
+
+    refreshTable();
+}
+
+void MainWindow::on_button_scientist_info_clicked()
+{
+    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+
+    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+
+    int idOfSelectedScientist = currentlySelectedScientist.getID();
+
+
+
+    ScientistInfoDialog scientistInfoDialog;
+
+    scientistInfoDialog.displayInfo(currentlySelectedScientist.getName(),
+                                    currentlySelectedScientist.getGender(),
+                                    currentlySelectedScientist.getYearOfBirth(),
+                                    currentlySelectedScientist.getYearOfDeath());
+
+    scientistInfoDialog.exec();
+}
+
+
+void MainWindow::on_scientist_table_clicked(const QModelIndex &index)
+{
+    ui->button_scientist_remove->setEnabled(true);
+    ui->button_scientist_info->setEnabled(true);
+    ui->button_scientist_edit->setEnabled(true);
+}
+

@@ -11,93 +11,15 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Info about scientist</string>
   </property>
-  <widget class="QLabel" name="label_image">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>80</y>
-     <width>231</width>
-     <height>221</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="browse_image_clicked">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>330</y>
-     <width>80</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>IMAGE</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="edit_scientist">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>350</y>
-     <width>80</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>EDIT</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="remove_scientist">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>370</y>
-     <width>80</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>REMOVE</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="scientist_info">
-   <property name="geometry">
-    <rect>
-     <x>270</x>
-     <y>160</y>
-     <width>281</width>
-     <height>231</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="scientist_relation">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>310</y>
-     <width>141</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Tenglsatafla</string>
-   </property>
-  </widget>
   <widget class="QTableWidget" name="scientist_data">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>70</y>
-     <width>281</width>
-     <height>61</height>
+     <x>310</x>
+     <y>291</y>
+     <width>261</width>
+     <height>91</height>
     </rect>
    </property>
    <property name="showGrid">
@@ -107,39 +29,143 @@
     <enum>Qt::NoPen</enum>
    </property>
    <attribute name="horizontalHeaderVisible">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QLineEdit" name="id_input">
+  <widget class="QLineEdit" name="info_display_name">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>30</y>
+     <width>161</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="info_display_year_of_birth">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>90</y>
+     <width>161</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="info_display_year_of_death">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>140</y>
+     <width>161</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="info_display_gender">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>180</y>
+     <width>171</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
-     <width>261</width>
-     <height>31</height>
+     <y>80</y>
+     <width>258</width>
+     <height>359</height>
     </rect>
    </property>
-   <property name="mouseTracking">
-    <bool>true</bool>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="scientist_info">
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="scientist_relation">
+      <property name="text">
+       <string>Tenglsatafla</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="browse_image_clicked">
+      <property name="text">
+       <string>IMAGE</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_image">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="edit_scientist">
+      <property name="text">
+       <string>EDIT</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>20</y>
+     <width>157</width>
+     <height>192</height>
+    </rect>
    </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-   </property>
-   <property name="placeholderText">
-    <string>Enter ID of Scientist...</string>
-   </property>
-   <property name="cursorMoveStyle">
-    <enum>Qt::LogicalMoveStyle</enum>
-   </property>
-   <property name="clearButtonEnabled">
-    <bool>true</bool>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Name:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Year of birth:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Year of death:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Gender:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

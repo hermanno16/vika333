@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
+    <width>519</width>
     <height>430</height>
    </rect>
   </property>
@@ -131,7 +131,7 @@
     <string>Photo</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -199,12 +199,7 @@
     </item>
    </layout>
   </widget>
-  <zorder>FirstNameLable</zorder>
-  <zorder>label_scientist_year_of_birth</zorder>
-  <zorder>label_scientist_year_of_death</zorder>
-  <zorder>label_scientist_gender</zorder>
-  <zorder>label_add_scientist_photo</zorder>
-  <zorder>label_add_scientist_info</zorder>
+  <zorder>layoutWidget</zorder>
   <zorder>radioButton_if_female</zorder>
   <zorder>radioButton_if_male</zorder>
   <zorder>pushButton_add_scientist</zorder>

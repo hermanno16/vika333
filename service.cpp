@@ -27,6 +27,11 @@ vector<Scientist> Service::getAllScientistsAtoZ()
 
     return allScientists;
 }
+
+
+
+
+
 vector<Scientist> Service::getAllScientistsZtoA()
 {
     vector<Scientist> allScientists;

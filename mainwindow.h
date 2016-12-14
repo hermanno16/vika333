@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "scientist.h"
+#include <vector>
 #include "service.h"
 //#include "addscientistwindow.h"
 #include "computer.h"
@@ -41,8 +42,12 @@ private slots:
 
     void on_button_info_computer_clicked();
 
-private:
+    void on_button_scientist_remove_clicked();
 
+    void on_scientist_table_clicked(const QModelIndex &index);
+
+private:
+    void refreshTable();
     void displayAllScientists();
     void displayScientists(vector<Scientist> scientists);
     void displayAllComputers();
@@ -50,6 +55,9 @@ private:
 
     Ui::MainWindow *ui;
     Service _service;
+
+    vector<Scientist> currentlyDisplayedScientists;
+
 };
 
 #endif // MAINWINDOW_H

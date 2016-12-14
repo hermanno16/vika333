@@ -115,10 +115,10 @@ vector<Scientist> DataAccess::searchForScientists(string searchString)
 
     return allScientists;
 }
-/*
-Scientist DataAccess::searchForScientistID(int searchID)
+
+vector<Scientist> DataAccess::searchForScientistID(int searchID)
 {
-    Scientist oneScientist;
+    vector<Scientist> oneScientist;
 
     QSqlQuery query;
     query.prepare("SELECT * FROM Scientists WHERE ID = (:id)");
@@ -140,11 +140,12 @@ Scientist DataAccess::searchForScientistID(int searchID)
                     YearOfBirth,
                     yearOfDeath.toStdString()
                     );
-        oneScientist = newScientist;
+
+        oneScientist.push_back(newScientist);
     }
 
     return oneScientist;
-}*/
+}
 
 //Scientist - other functions.
 void DataAccess::removeScientistFromDatabase(int idOfScientist)
@@ -201,11 +202,12 @@ bool DataAccess::isComputerNameAlreadyInDatabase(string& inputName)
 void DataAccess::addScientistToDataBase(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender)
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Scientists (FirstName, YearOfBirth, YearOfDeath, Gender) VALUES (:name, :yearofbirth, :yearofdeath, :gender)");
+    query.prepare("INSERT INTO Scientists (FirstName, YearOfBirth, YearOfDeath, Gender) "
+                  "VALUES (:name, :yearofbirth, :yearofdeath, :gender)");
 
     query.bindValue(":name", QString::fromStdString(inputName));
     query.bindValue(":yearofbirth", atoi(inputYearOfBirth.c_str()));
-    query.bindValue(":yearofdeath", atoi(inputYearOfDeath.c_str()));
+    query.bindValue(":yearofdeath", QString::fromStdString(inputYearOfDeath));
     query.bindValue(":gender", QString::fromStdString(inputGender));
     query.exec();
 }

@@ -5,6 +5,7 @@
 #include "addscientistdialog.h"
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
+#include "scientisteditdialog.h"
 #include <QModelIndex>
 
 using namespace std;
@@ -16,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     refreshTable();
-
 }
 
 MainWindow::~MainWindow()
@@ -185,4 +185,22 @@ void MainWindow::on_scientist_table_clicked(const QModelIndex &index)
     ui->button_scientist_info->setEnabled(true);
     ui->button_scientist_edit->setEnabled(true);
 }
+
+
+void MainWindow::on_button_scientist_edit_clicked()
+{
+    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+    int idOfSelectedScientist = currentlySelectedScientist.getID();
+
+    scientistEditDialog scientisteditDialog;
+    scientisteditDialog.displayInfo(currentlySelectedScientist.getName(),
+                                    currentlySelectedScientist.getGender(),
+                                    currentlySelectedScientist.getYearOfBirth(),
+                                    currentlySelectedScientist.getYearOfDeath());
+
+    scientisteditDialog.exec();
+    refreshTable();
+}
+
 

@@ -71,10 +71,7 @@ void MainWindow::displayScientists(vector<Scientist> scientists)
 
     currentlyDisplayedScientists = scientists;
 }
-void MainWindow::on_row_clicked()
-{
-    //TODO -- klikka á nafn á listanum, fá upp infoið
-}
+
 void MainWindow::on_search_box_textChanged()
 {
     string userInput = ui->search_box->text().toStdString();
@@ -83,13 +80,6 @@ void MainWindow::on_search_box_textChanged()
     displayScientists(scientists);
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    /*
-    AddScientistDialog addStudentDialog;
-    addStudentDialog.exec();
-    */
-}
 
 void MainWindow::on_button_add_scientist_clicked()
 {
@@ -132,10 +122,7 @@ void MainWindow::displayComputers(vector<Computer> computers)
         ui->computer_table->setItem(row, 4, new QTableWidgetItem(development));
     }
 }
-void MainWindow::on_dropdown_what_to_look_at_currentTextChanged(const QString &arg1)
-{
 
-}
 
 void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
 {

@@ -70,15 +70,13 @@ void addComputerDialog::on_pushButton_add_computer_clicked()
         QMessageBox::critical (this, "Error", "The Type Cannot Be Empty");
         return;
     }
-    /*else if ()
-    {
-        //ath hvort tölvan er til í gagnagrunninum ef ekki adda upplýsingunum
-        return;
-    }
-*/
     else
     {
-        _service.addComputerToData(computerName.toStdString(), computerYearBuilt.toStdString(), computerType.toStdString(), computerDevelopment.toStdString());
+        _service.addComputerToData(computerName.toStdString(),
+                                   computerYearBuilt.toStdString(),
+                                   computerType.toStdString(),
+                                   computerDevelopment.toStdString(),
+                                   computerInfo.toStdString());
     }
 }
 

@@ -38,6 +38,8 @@ private slots:
 
     void on_computer_table_clicked(const QModelIndex &index);
 
+    void on_button_computer_edit_clicked();
+
 private:
     void refreshTable();
     void displayAllScientists();

@@ -78,7 +78,6 @@ void ComputerDialog::on_pushButton_clicked()
 }
 void ComputerDialog::on_button_add_computer_clicked()
 {
-    //AddComputerDialog addComputerDialog;
     addComputerDialog AddComputerDialog;
     int addComputerReturnValue = AddComputerDialog.exec();
 }

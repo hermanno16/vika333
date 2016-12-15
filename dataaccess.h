@@ -48,7 +48,7 @@ public:
     bool addScientistToComputer(int ID, int Cid);
     void removeRelationFromDatabase(int id, int cID);
   //  void addScientistToComputer(int inputID, int inputCid);
-    bool isScientistAlreadyInDatabase(string& inputName);
+    bool isScientistAlreadyInDatabase(Scientist newScientist);
 
     //--Computers--//
     vector<Computer> getAllComputerInfoFromDataBase(QString queryCommand);

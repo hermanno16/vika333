@@ -3,6 +3,7 @@
 #include "service.h"
 #include "dataaccess.h"
 #include "scientist.h"
+#include <QMessageBox>
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
@@ -44,8 +45,43 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked(){
     }
 
     newScientist.setGender(gender);
+
+    if((newScientist.getName()).length() == 0)
+    {
+        QMessageBox::critical (this, "Error", "the name cannot be empty!");
+        return;
+    }
+
+    else if((newScientist.getYearOfBirth()) == 0)
+    {
+        QMessageBox::critical(this, "Error", "the year of birth cannot be empty!");
+        return;
+    }
+
+    _service.fixInputYearOfDeath(newScientist);
+
+    if(!_service.isYearOfBirthOfScientistValid(newScientist))
+    {
+        QMessageBox::critical(this, "Error", "the year of birth is not valid!");
+        return;
+    }
+
+    _service.fixInputNameScientist(newScientist);
+
+    if(_service.isScientistAlreadyInDatabase(newScientist))
+    {
+        QMessageBox::critical(this, "Error", "the scientist is already in database!");
+        return;
+    }
+    else if(newScientist.getYearOfDeath().length() == 0)
+    {
+        QMessageBox::critical(this, "Error", "the year of death cannot be empty!");
+        return;
+    }
+
      _service.addScientistToData(newScientist);
 
+     QMessageBox::Accepted;
     //If scientist was added. Window will close.
     this->close();
 }

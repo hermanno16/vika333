@@ -166,9 +166,9 @@ void DataAccess::removeRelationFromDatabase(int id, int cID)
     query.bindValue(":cid", cID);
     query.exec();
 }
-bool DataAccess::isScientistAlreadyInDatabase(string& inputName)
+bool DataAccess::isScientistAlreadyInDatabase(Scientist newScientist)
 {
-    QString qSearchName = QString::fromStdString(inputName);
+    QString qSearchName = QString::fromStdString(newScientist.getName());
 
     QSqlQuery query;
     query.prepare("SELECT * FROM Scientists WHERE (FirstName) LIKE '%"+qSearchName+"%'");

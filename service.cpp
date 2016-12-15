@@ -290,85 +290,71 @@ void Service::removeComputerFromDataBase(int idOfComputer)
     _dAccess.removeComputerFromDatabase(idOfComputer);
 }
 
-/*
- * Functions to check if information about scientist who is about to be added is valid.
- * */
-bool Service::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
+bool Service::isScientistAlreadyInDatabase(Scientist newScientist)
 {
-    bool checkIfNameIsAlreadyInDataBase = true;
-    bool checkName = false;
-    bool checkGender = false;
-    bool checkYearOfBirth = false;
-    bool checkYearOfDeath = false;
-
-    if(_dAccess.isScientistAlreadyInDatabase(name) == true)
+    if(_dAccess.isScientistAlreadyInDatabase(newScientist))
     {
-        checkIfNameIsAlreadyInDataBase = false;
+        return true;
     }
 
-    if(name.length() > 0)
-    {
-        checkName = true;
-    }
-
-    if(gender.length() > 3)
-    {
-        for(unsigned int i = 0; i < gender.size(); i++)
-        {
-            gender.at(i) = tolower(gender.at(i));
-        }
-
-        if(gender == "male" || gender == "female")
-        {
-            checkGender = true;
-        }
-    }
-
-    if(atoi(yearOfBirth.c_str()) <= YEARTODAY && atoi(yearOfBirth.c_str()) > 0)
-    {
-        checkYearOfBirth = true;
-    }
-
-    if(yearOfDeath == "N/A" || (atoi(yearOfDeath.c_str()) > atoi(yearOfBirth.c_str())) || (atoi(yearOfDeath.c_str())) <= YEARTODAY)
-    {
-        checkYearOfDeath = true;
-    }
-
-    return (checkIfNameIsAlreadyInDataBase && checkName && checkGender && checkYearOfBirth && checkYearOfDeath);
-
+    return false;
 }
 
-void Service::fixInputNameScientist(string& inputName)
+
+bool Service::isYearOfBirthOfScientistValid(Scientist newScientist)
 {
-    inputName = inputName.substr(0,40);
+    bool yearOfBirthCheck1 = false;
+    bool yearOfBirthCheck2 = false;
 
-    inputName.at(0) = toupper(inputName.at(0));
 
-    for(unsigned int i = 1; i < inputName.size(); i++)
+    if(newScientist.getYearOfBirth() <= YEARTODAY)
     {
-        if (inputName.at(i - 1) == ' ')
+        yearOfBirthCheck1 = true;
+    }
+
+    if(newScientist.getYearOfBirth() <= atoi(newScientist.getYearOfDeath().c_str()))
+    {
+        yearOfBirthCheck2 = true;
+    }
+
+    if(newScientist.getYearOfDeath() == "N/A")
+    {
+       yearOfBirthCheck2 = true;
+    }
+
+    return (yearOfBirthCheck1 && yearOfBirthCheck2);
+}
+void Service::fixInputYearOfDeath(Scientist& newScientist)
+{
+    string yearOfDeath = newScientist.getYearOfDeath();
+
+    yearOfDeath.at(0) = toupper(yearOfDeath.at(0));
+    yearOfDeath.at(2) = toupper(yearOfDeath.at(2));
+
+    newScientist.setYearOfDeath(yearOfDeath);
+}
+
+void Service::fixInputNameScientist(Scientist& newScientist)
+{
+    string name = newScientist.getName();
+
+    name = name.substr(0,40);
+    name.at(0) = toupper(name.at(0));
+
+    for(unsigned int i = 1; i < name.size(); i++)
+    {
+        if (name.at(i - 1) == ' ')
         {
-            inputName.at(i) = toupper(inputName.at(i));
+            name.at(i) = toupper(name.at(i));
         }
         else
         {
-            inputName.at(i) = tolower(inputName.at(i));
+            name.at(i) = tolower(name.at(i));
         }
     }
+    newScientist.setName(name);
 }
-void Service::fixInputGenderScientist(string& inputGender)
-{
-    //Max size of input is 6, if string is longer,the rest will be cut off.
-    inputGender = inputGender.substr(0,6);
-    //First letter to upper case.
-    inputGender.at(0) = toupper(inputGender.at(0));
-    //Rest of the letters to lower case.
-    for(unsigned int i = 1; i < inputGender.size(); i++)
-    {
-        inputGender.at(i) = tolower(inputGender.at(i));
 
-    }
-}
 void Service::fixInputTypeComputer(string& inputType)
 {
     inputType = inputType.substr(0,21);

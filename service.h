@@ -52,12 +52,16 @@ public:
     void removeRelationFromDatabase(int inputID,int inputCid);
     //--Check functions--//
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
+    bool isScientistAlreadyInDatabase(Scientist newScientist);
+    bool isYearOfBirthOfScientistValid(Scientist newScientist);
+    bool isYearOfDeathOfScientistValid(string yearOfBirth);
     bool isAddComputerValid(string name, string yearBuilt, string type, string development);
     void addScientistToData(Scientist newScientist);
     void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment);
     bool inputNameValid(string input);
-    void fixInputNameScientist(string& inputName);
+    void fixInputNameScientist(Scientist& newScientist);
     void fixInputGenderScientist(string& inputGender);
+    void fixInputYearOfDeath(Scientist &newScientist);
     void fixInputTypeComputer(string& inputType);
     void fixInputDevelopmentComputer(string& inputDevelopment);
     //--Open database--//

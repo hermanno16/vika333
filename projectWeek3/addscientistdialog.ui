@@ -44,19 +44,12 @@
     <rect>
      <x>20</x>
      <y>350</y>
-     <width>141</width>
+     <width>211</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="toolTip">
-    <string>Add scientist to list</string>
-   </property>
    <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/Add.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/Add.ico</iconset>
+    <string>Add scientist to list</string>
    </property>
   </widget>
   <widget class="QPushButton" name="cancel_add_scientist_window">
@@ -64,22 +57,12 @@
     <rect>
      <x>20</x>
      <y>390</y>
-     <width>141</width>
+     <width>211</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="toolTip">
-    <string>Cancel</string>
-   </property>
    <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</iconset>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
+    <string>Cancel</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="input_scientist_name">
@@ -145,7 +128,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>Photo</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

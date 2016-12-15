@@ -42,6 +42,7 @@
   <widget class="QLabel" name="label_related_scientists">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>8</x>
      <y>350</y>
      <width>191</width>
@@ -50,15 +51,25 @@
    </property>
    <property name="toolTip">
     <string>Cancel</string>
+=======
+     <x>410</x>
+     <y>10</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Related scientists:</string>
+>>>>>>> bad12db68457f59d89d4e4928f4a909897152aa6
    </property>
    <property name="text">
     <string/>
    </property>
-   <property name="icon" stdset="0">
+   <property name="icon">
     <iconset>
      <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</iconset>
    </property>
-   <property name="shortcut" stdset="0">
+   <property name="shortcut">
     <string>Ctrl+C</string>
    </property>
   </widget>
@@ -71,6 +82,11 @@
      <height>201</height>
     </rect>
    </property>
+<<<<<<< HEAD
+   <property name="text">
+    <string/>
+   </property>
+=======
    <property name="columnCount">
     <number>1</number>
    </property>
@@ -84,6 +100,7 @@
     <bool>false</bool>
    </attribute>
    <column/>
+>>>>>>> bad12db68457f59d89d4e4928f4a909897152aa6
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -163,7 +180,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QTextEdit" name="computer_display_info">
+  <widget class="QTextEdit" name="info_computer_info">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -186,6 +203,7 @@
   <tabstop>radioButton_display_if_developed</tabstop>
   <tabstop>radioButton_display_if_original</tabstop>
   <tabstop>computer_display_Type</tabstop>
+  <tabstop>computer_display_Info</tabstop>
   <tabstop>cancel_button</tabstop>
  </tabstops>
  <resources/>

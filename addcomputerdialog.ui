@@ -42,7 +42,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Photo</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_add_computer">
@@ -50,12 +50,19 @@
     <rect>
      <x>10</x>
      <y>340</y>
-     <width>211</width>
+     <width>171</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>Add computer to list</string>
+   </property>
    <property name="text">
-    <string>Add Computer to list</string>
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/Add.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/Add.ico</iconset>
    </property>
   </widget>
   <widget class="QLineEdit" name="computer_Add_Info">
@@ -73,12 +80,22 @@
     <rect>
      <x>10</x>
      <y>380</y>
-     <width>211</width>
+     <width>171</width>
      <height>31</height>
     </rect>
    </property>
-   <property name="text">
+   <property name="toolTip">
     <string>Cancel</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</iconset>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="computer_Input_Year_Built">
@@ -219,7 +236,8 @@
  <tabstops>
   <tabstop>computer_Input_Name</tabstop>
   <tabstop>computer_Input_Year_Built</tabstop>
-  <tabstop>computer_Input_Development</tabstop>
+  <tabstop>radioButton_if_developed</tabstop>
+  <tabstop>radioButton_if_original</tabstop>
   <tabstop>computer_Input_Type</tabstop>
   <tabstop>add_Photo_computer_Button</tabstop>
   <tabstop>computer_Add_Info</tabstop>

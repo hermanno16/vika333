@@ -1,8 +1,11 @@
 #include "addcomputerdialog.h"
 #include "ui_addcomputerdialog.h"
-
+#include "service.h"
+#include "computer.h"
+#include "dataaccess.h"
 
 using namespace std;
+
 
 addComputerDialog::addComputerDialog(QWidget *parent) :
     QDialog(parent),
@@ -16,8 +19,28 @@ addComputerDialog::~addComputerDialog()
     delete ui;
 }
 
+void addComputerDialog::on_add_Photo_computer_Button_clicked()
+{
+    string filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "",
+                    "Image files (*.png *.jpg)"
+                    ).toStdString();
+        if (filePath.length())
+        {
+            //user selected some file
+            QPixmap pixmap(QString::fromStdString(filePath));
 
+            ui->label_computer_photo->setPixmap(pixmap);
+            ui->label_computer_photo->setScaledContents(true);
 
+        }
+        else
+        {
+            //user did not select a file
+        }
+}
 
 void addComputerDialog::on_pushButton_add_computer_clicked()
 {
@@ -49,7 +72,11 @@ void addComputerDialog::on_pushButton_add_computer_clicked()
     }
     else
     {
-        //ath hvort tölvan er til í gagnagrunninum ef ekki adda upplýsingunum
-        return;
+        _service.addComputerToData(computerName.toStdString(),
+                                   computerYearBuilt.toStdString(),
+                                   computerType.toStdString(),
+                                   computerDevelopment.toStdString(),
+                                   computerInfo.toStdString());
     }
 }
+

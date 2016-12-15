@@ -53,8 +53,8 @@ public:
     //--Check functions--//
     bool isAddScientistValid(string name, string yearOfBirth, string yearOfDeath, string gender);
     bool isAddComputerValid(string name, string yearBuilt, string type, string development);
-    void addScientistToData(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender);
-    void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment);
+    void addScientistToData(Scientist newScientist);
+    void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment, string inputInfo);
     bool inputNameValid(string input);
     void fixInputNameScientist(string& inputName);
     void fixInputGenderScientist(string& inputGender);

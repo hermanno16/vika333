@@ -10,6 +10,8 @@ class Scientist
 {
 public:
     //--Constructors--//
+    Scientist(){}
+    Scientist(string name, string gender, int yearOfBirth, string yearOfDeath, string scientistInfo);
     Scientist(int ID, string name, string gender, int yearOfBirth, string yearOfDeath, string scientistInfo);
     //--Set functions--//
     void setName(string name);

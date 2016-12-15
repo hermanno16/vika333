@@ -162,14 +162,22 @@ void MainWindow::on_button_info_computer_clicked()
 
 void MainWindow::on_button_scientist_remove_clicked()
 {
-    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+    QMessageBox::StandardButton scientistReply;
+    scientistReply = QMessageBox::question (this, "Delete Scientist", "Are you sure you wannt to delete the Scientist ?");
 
-    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+    if (scientistReply == QMessageBox::Yes)
+    {
+        int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+        Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
+        _service.removeScientistFromDataBase(currentlySelectedScientist.getID());
 
+        refreshTable();
+    }
 
-    _service.removeScientistFromDataBase(currentlySelectedScientist.getID());
-
-    refreshTable();
+    else
+    {
+        return;
+    }
 }
 
 void MainWindow::on_button_scientist_info_clicked()
@@ -227,13 +235,25 @@ void MainWindow::on_add_relation_clicked()
 
 void MainWindow::on_button_computer_remove_clicked()
 {
-    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+    QMessageBox::StandardButton computerReply;
+    computerReply = QMessageBox::question (this, "Delete Computer", "Are you sure you wannt to delete the Computer ?");
 
-    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+    if (computerReply == QMessageBox::Yes)
+    {
+        int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
 
-    _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+        Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
 
-    refreshTable();
+        _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+
+        refreshTable();
+    }
+
+    else
+    {
+        return;
+    }
+
 }
 
 void MainWindow::on_computer_table_clicked(const QModelIndex &index)

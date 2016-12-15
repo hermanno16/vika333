@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <string>
 #include <QString>
+#include "computereditdialog.h"
+#include "computerinfodialog.h"
 #include "addscientistdialog.h"
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
@@ -24,13 +26,11 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 void MainWindow::displayAllScientists()
 {
     vector<Scientist> scientists = _service.getAllScientistsAtoZ();
     displayScientists(scientists);
 }
-
 void MainWindow::refreshTable()
 {
     displayAllScientists();
@@ -42,8 +42,6 @@ void MainWindow::refreshTable()
     ui->button_computer_remove->setEnabled(false);
     ui->button_info_computer->setEnabled(false);
 }
-
-
 void MainWindow::displayScientists(vector<Scientist> scientists)
 {
     ui->scientist_table->setSortingEnabled(false);
@@ -77,7 +75,6 @@ void MainWindow::displayScientists(vector<Scientist> scientists)
     currentlyDisplayedScientists = scientists;
     ui->scientist_table->setSortingEnabled(true);
 }
-
 void MainWindow::on_search_box_textChanged()
 {
     string userInput = ui->search_box->text().toStdString();
@@ -87,8 +84,6 @@ void MainWindow::on_search_box_textChanged()
     displayScientists(scientists);
 
 }
-
-
 void MainWindow::on_button_add_scientist_clicked()
 {
    AddScientistDialog addScientistDialog;
@@ -96,7 +91,6 @@ void MainWindow::on_button_add_scientist_clicked()
    addScientistDialog.exec();
    refreshTable();
 }
-
 void MainWindow::displayAllComputers()
 {
     vector<Computer> computers = _service.getAllComputersAtoZ();
@@ -136,8 +130,6 @@ void MainWindow::displayComputers(vector<Computer> computers)
     ui->computer_table->setSortingEnabled(true);
 
 }
-
-
 void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
 {
     string userInput = ui->search_box_computer->text().toStdString();
@@ -145,21 +137,30 @@ void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
     vector<Computer> computers = _service.searchForComputers(userInput);
     displayComputers(computers);
 }
-
 void MainWindow::on_button_add_computer_clicked()
 {
     addComputerDialog AddComputerDialog;
     int addComputerReturnValue = AddComputerDialog.exec();
     refreshTable();
 }
-
 void MainWindow::on_button_info_computer_clicked()
 {
-   addComputerDialog computerInfoDialog;
+    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+    int idOfSelectedComputer = currentlySelectedComputer.getId();
 
-   int computerInfoReturnValue = computerInfoDialog.exec();
+    ComputerInfoDialog computerInfoDialog;
+    computerInfoDialog.displayInfo(currentlySelectedComputer.getName(),
+                                   currentlySelectedComputer.getType(),
+                                   currentlySelectedComputer.getYearBuilt(),
+                                   currentlySelectedComputer.getDevelopment(),
+                                   currentlySelectedComputer.getComputerInfo());
+
+    computerInfoDialog.exec();
+    refreshTable();
+
+
 }
-
 void MainWindow::on_button_scientist_remove_clicked()
 {
     QMessageBox::StandardButton scientistReply;
@@ -179,7 +180,6 @@ void MainWindow::on_button_scientist_remove_clicked()
         return;
     }
 }
-
 void MainWindow::on_button_scientist_info_clicked()
 {
     int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
@@ -200,16 +200,12 @@ void MainWindow::on_button_scientist_info_clicked()
 
     scientistInfoDialog.exec();
 }
-
-
 void MainWindow::on_scientist_table_clicked(const QModelIndex &index)
 {
     ui->button_scientist_remove->setEnabled(true);
     ui->button_scientist_info->setEnabled(true);
     ui->button_scientist_edit->setEnabled(true);
 }
-
-
 void MainWindow::on_button_scientist_edit_clicked()
 {
     int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
@@ -255,10 +251,25 @@ void MainWindow::on_button_computer_remove_clicked()
     }
 
 }
-
 void MainWindow::on_computer_table_clicked(const QModelIndex &index)
 {
     ui->button_computer_edit->setEnabled(true);
     ui->button_computer_remove->setEnabled(true);
     ui->button_info_computer->setEnabled(true);
+}
+void MainWindow::on_button_computer_edit_clicked()
+{
+    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+    int idOfSelectedComputer = currentlySelectedComputer.getId();
+
+    ComputerEditDialog computerEditDialog;
+    computerEditDialog.displayInfo(currentlySelectedComputer.getName(),
+                                   currentlySelectedComputer.getType(),
+                                   currentlySelectedComputer.getYearBuilt(),
+                                   currentlySelectedComputer.getDevelopment(),
+                                   currentlySelectedComputer.getComputerInfo());
+
+    computerEditDialog.exec();
+    refreshTable();
 }

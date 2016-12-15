@@ -20,15 +20,15 @@ void scientistEditDialog::displayInfo(string name, string gender, int yearOfBirt
 
     ui->edit_scientist_name->setText(QString::fromStdString(name));
 
-    ui->radioButton_edit_if_male->setChecked(true);
+
     if(gender == "Male")
     {
-        ui->radioButton_edit_if_male->isEnabled();
+        ui->radioButton_edit_if_male->setChecked(true);
 
     }
     else if(gender == "Female")
     {
-        ui->radioButton_edit_if_female->isEnabled();
+        ui->radioButton_edit_if_female->setChecked(true);
     }
 
 

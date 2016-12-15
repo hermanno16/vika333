@@ -16,8 +16,28 @@ addComputerDialog::~addComputerDialog()
     delete ui;
 }
 
+void addComputerDialog::on_add_Photo_computer_Button_clicked()
+{
+    string filePath = QFileDialog::getOpenFileName(
+                    this,
+                    "Search for images",
+                    "",
+                    "Image files (*.png *.jpg)"
+                    ).toStdString();
+        if (filePath.length())
+        {
+            //user selected some file
+            QPixmap pixmap(QString::fromStdString(filePath));
 
+            ui->label_computer_photo->setPixmap(pixmap);
+            ui->label_computer_photo->setScaledContents(true);
 
+        }
+        else
+        {
+            //user did not select a file
+        }
+}
 
 void addComputerDialog::on_pushButton_add_computer_clicked()
 {
@@ -53,3 +73,4 @@ void addComputerDialog::on_pushButton_add_computer_clicked()
         return;
     }
 }
+

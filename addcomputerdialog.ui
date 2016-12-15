@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>489</width>
-    <height>437</height>
+    <width>501</width>
+    <height>420</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
   <property name="modal">
    <bool>false</bool>
   </property>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="add_Photo_computer_Button">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -79,22 +79,6 @@
    </property>
    <property name="text">
     <string>Cancel</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="computer_Input_Name">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>40</y>
-     <width>251</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="dragEnabled">
-    <bool>false</bool>
-   </property>
-   <property name="readOnly">
-    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLineEdit" name="computer_Input_Year_Built">
@@ -203,6 +187,16 @@
    </property>
    <property name="text">
     <string>Type :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="computer_Input_Name">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>40</y>
+     <width>251</width>
+     <height>21</height>
+    </rect>
    </property>
   </widget>
  </widget>

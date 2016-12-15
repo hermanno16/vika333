@@ -43,7 +43,7 @@ public:
     vector<Scientist> searchForScientists(string searchString);
     vector<Scientist> searchForScientistID(int searchID);
     //--Scientist other functions
-    void addScientistToDataBase(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender);
+    void addScientistToDataBase(Scientist newScientist);
     void removeScientistFromDatabase(int idOfScientist);
     bool addScientistToComputer(int ID, int Cid);
     void removeRelationFromDatabase(int id, int cID);

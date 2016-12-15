@@ -51,9 +51,9 @@ public:
     bool addRelation(int inputID,int inputCid);
     void removeRelationFromDatabase(int inputID,int inputCid);
     //--Check functions--//
-    bool isAddScientistValid(string name, string yearOfBirth, string yearOfDeath, string gender);
+    bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
     bool isAddComputerValid(string name, string yearBuilt, string type, string development);
-    void addScientistToData(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender);
+    void addScientistToData(Scientist newScientist);
     void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment);
     bool inputNameValid(string input);
     void fixInputNameScientist(string& inputName);

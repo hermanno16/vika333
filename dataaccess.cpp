@@ -199,17 +199,18 @@ bool DataAccess::isComputerNameAlreadyInDatabase(string& inputName)
     }
     return false;
 }
-void DataAccess::addScientistToDataBase(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender)
+void DataAccess::addScientistToDataBase(Scientist newScientist)
 {
     QSqlQuery query;
     query.prepare("INSERT INTO Scientists (FirstName, YearOfBirth, YearOfDeath, Gender) "
                   "VALUES (:name, :yearofbirth, :yearofdeath, :gender)");
 
-    query.bindValue(":name", QString::fromStdString(inputName));
-    query.bindValue(":yearofbirth", atoi(inputYearOfBirth.c_str()));
-    query.bindValue(":yearofdeath", QString::fromStdString(inputYearOfDeath));
-    query.bindValue(":gender", QString::fromStdString(inputGender));
+    query.bindValue(":name", QString::fromStdString(newScientist.getName()));
+    query.bindValue(":yearofbirth", newScientist.getYearOfBirth());
+    query.bindValue(":yearofdeath", QString::fromStdString(newScientist.getYearOfDeath()));
+    query.bindValue(":gender", QString::fromStdString(newScientist.getGender()));
     query.exec();
+
 }
 bool DataAccess::addScientistToComputer(int ID, int Cid)
 {

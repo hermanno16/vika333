@@ -3,6 +3,7 @@
 #include "service.h"
 
 #include <QDialog>
+using namespace std;
 
 namespace Ui {
 class AddScientistDialog;
@@ -21,7 +22,10 @@ private slots:
 
     void on_pushButton_add_scientist_clicked();
 
+    void on_cancel_add_scientist_window_clicked();
+
 private:
+    void clearAddScientist();
     Ui::AddScientistDialog *ui;
     Service _service;
 };

@@ -52,7 +52,7 @@
     <string>Add scientist to list</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="cancel_add_scientist_window">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -203,7 +203,7 @@
   <zorder>radioButton_if_female</zorder>
   <zorder>radioButton_if_male</zorder>
   <zorder>pushButton_add_scientist</zorder>
-  <zorder>pushButton_2</zorder>
+  <zorder>cancel_add_scientist_window</zorder>
   <zorder>input_scientist_name</zorder>
   <zorder>pushButton_3</zorder>
   <zorder>input_scientist_year_of_birth</zorder>

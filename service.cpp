@@ -276,9 +276,9 @@ string Service::getComputerName(int idNumber)
     return aComputer;
 }
 //-- Valid functions --//
-void Service::addScientistToData(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender)
+void Service::addScientistToData(Scientist newScientist)
 {
-    _dAccess.addScientistToDataBase(inputName, inputYearOfBirth, inputYearOfDeath, inputGender);
+    _dAccess.addScientistToDataBase(newScientist);
 }
 
 void Service::addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment)
@@ -290,19 +290,10 @@ void Service::removeComputerFromDataBase(int idOfComputer)
     _dAccess.removeComputerFromDatabase(idOfComputer);
 }
 
-bool Service::inputNameValid(string input)
-{
-    if(atoi(input.c_str()) && input.length() < 40)
-    {
-        return false;
-    }
-
-    return true;
-}
 /*
  * Functions to check if information about scientist who is about to be added is valid.
  * */
-bool Service::isAddScientistValid(string name, string yearOfBirth, string yearOfDeath, string gender)
+bool Service::isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath)
 {
     bool checkIfNameIsAlreadyInDataBase = true;
     bool checkName = false;

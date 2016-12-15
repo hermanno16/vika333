@@ -9,27 +9,31 @@ AddScientistDialog::AddScientistDialog(QWidget *parent) :
     ui(new Ui::AddScientistDialog)
 {
     ui->setupUi(this);
-
 }
 
 
-//void AddScientistDialog::clearAddScientist
-
-
+void AddScientistDialog::clearAddScientist()
+{
+    ui->input_scientist_name->setText("");
+    ui->input_scientist_year_of_birth->setText("");
+    ui->input_scientist_year_of_death->setText("");
+}
 
 AddScientistDialog::~AddScientistDialog()
 {
     delete ui;
 }
 
-void AddScientistDialog::on_pushButton_add_scientist_clicked()
-{
+void AddScientistDialog::on_pushButton_add_scientist_clicked(){
 
+    Scientist newScientist;
 
-    QString name = ui->input_scientist_name->text();
-    QString yearOfBirth = ui->input_scientist_year_of_birth->text();
-    QString yearOfDeath = ui->input_scientist_year_of_death->text();
+    newScientist.setName((ui->input_scientist_name->text()).toStdString());
+    newScientist.setYearOfBirth((ui->input_scientist_year_of_birth->text()).toInt());
+    newScientist.setYearOfDeath((ui->input_scientist_year_of_death->text()).toStdString());
     string gender;
+
+
     if(ui->radioButton_if_male->isChecked())
     {
         gender = "Male";
@@ -38,27 +42,15 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
     {
         gender = "Female";
     }
-    _service.addScientistToData(name.toStdString(), yearOfBirth.toStdString(), yearOfDeath.toStdString(), gender);
 
-    /*
-    if(name.isEmpty())
-    {
-        isValid = false;
+    newScientist.setGender(gender);
+     _service.addScientistToData(newScientist);
 
-    }
-
-    if(yearOfBirth.isEmpty())
-    {
-        isValid = false;
-    }
-
-
-    if(yearOfDeath.isEmpty())
-    {
-        isValid = false;
-    }
-    */
+    //If scientist was added. Window will close.
     this->close();
+}
 
-
+void AddScientistDialog::on_cancel_add_scientist_window_clicked()
+{
+    this->close();
 }

@@ -226,12 +226,19 @@ bool DataAccess::addScientistToComputer(string scientistName, string computerNam
     {
         ID = theScientist[0].getID();
     }
+    else
+    {
+        return false;
+    }
     vector<Computer> theComputer = searchForComputers(computerName);
     if(theComputer.size()!=0)
     {
         Cid = theComputer[0].getId();
     }
-
+    else
+    {
+        return false;
+    }
 
     vector<Scientist> relationCheck = connectComputerToScientist(Cid); // Checks if there are results of realation to a computer.
     if(relationCheck.size() == 0)
@@ -322,7 +329,7 @@ vector<Computer> DataAccess::getAllComputerInfoFromDataBase(QString queryCommand
 }
 vector<Computer> DataAccess::getAllComputersAtoZ()
 {
-    return getAllComputerInfoFromDataBase("SELECT Cid,ComputerName,Type,YearBuilt,Development FROM Computers ORDER BY ComputerName Asc");
+    return getAllComputerInfoFromDataBase("SELECT Cid,ComputerName,Type,YearBuilt,Development, Information FROM Computers ORDER BY ComputerName Asc");
 }
 vector<Computer> DataAccess::getAllComputersZtoA()
 {

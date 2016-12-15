@@ -200,6 +200,16 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>computer_Input_Name</tabstop>
+  <tabstop>computer_Input_Year_Built</tabstop>
+  <tabstop>computer_Input_Development</tabstop>
+  <tabstop>computer_Input_Type</tabstop>
+  <tabstop>add_Photo_computer_Button</tabstop>
+  <tabstop>computer_Add_Info</tabstop>
+  <tabstop>pushButton_add_computer</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

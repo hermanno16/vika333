@@ -211,6 +211,17 @@
   <zorder>lineEdit_4</zorder>
   <zorder>label_scientist_photo</zorder>
  </widget>
+ <tabstops>
+  <tabstop>input_scientist_name</tabstop>
+  <tabstop>input_scientist_year_of_birth</tabstop>
+  <tabstop>input_scientist_year_of_death</tabstop>
+  <tabstop>radioButton_if_female</tabstop>
+  <tabstop>radioButton_if_male</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>pushButton_add_scientist</tabstop>
+  <tabstop>cancel_add_scientist_window</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

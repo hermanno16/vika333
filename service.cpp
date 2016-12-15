@@ -151,9 +151,9 @@ vector<Computer> Service::connectScientistToComputer(int idNumber)
 
     return allComputers;
 }
-bool Service::addRelation(int inputID,int inputCid)
+bool Service::addRelation(string scientistName, string computerName)
 {
-    bool relation = _dAccess.addScientistToComputer(inputID,inputCid);
+    bool relation = _dAccess.addScientistToComputer(scientistName, computerName);
 
     return relation;
 }
@@ -276,9 +276,9 @@ string Service::getComputerName(int idNumber)
     return aComputer;
 }
 //-- Valid functions --//
-void Service::addScientistToData(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender)
+void Service::addScientistToData(Scientist newScientist)
 {
-    _dAccess.addScientistToDataBase(inputName, inputYearOfBirth, inputYearOfDeath, inputGender);
+    _dAccess.addScientistToDataBase(newScientist);
 }
 
 void Service::addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment, string inputInfo)

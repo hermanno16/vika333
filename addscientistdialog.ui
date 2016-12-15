@@ -128,7 +128,7 @@
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>Photo</string>
    </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">

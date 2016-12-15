@@ -34,6 +34,8 @@ private slots:
     void on_scientist_table_clicked(const QModelIndex &index);
     void on_button_scientist_edit_clicked();
 
+    void on_add_relation_clicked();
+
 private:
     void refreshTable();
     void displayAllScientists();

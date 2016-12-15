@@ -218,9 +218,30 @@ void DataAccess::addScientistToDataBase(Scientist newScientist)
     query.exec();
 
 }
-bool DataAccess::addScientistToComputer(int ID, int Cid)
+bool DataAccess::addScientistToComputer(string scientistName, string computerName)
 {
     bool existCheck = false;
+
+    vector<Computer> allComputers = getAllComputersAtoZ();
+    vector<Scientist> allScientists = getAllScientistsAtoZ();
+
+    int ID;
+    int Cid;
+
+    for(unsigned int i = 0; i < allComputers.size(); i++)
+    {
+        if(allComputers[i].getName() == computerName)
+        {
+            int Cid = allComputers[i].getId();
+        }
+    }
+    for(unsigned int j = 0; j < allScientists.size(); j++)
+    {
+        if(allScientists[j].getName() == scientistName)
+        {
+            int ID = allScientists[j].getID();
+        }
+    }
 
     vector<Scientist> relationCheck = connectComputerToScientist(Cid); // Checks if there are results of realation to a computer.
     if(relationCheck.size() == 0)
@@ -230,7 +251,6 @@ bool DataAccess::addScientistToComputer(int ID, int Cid)
         query.bindValue(":cid", Cid);
         query.bindValue(":id", ID);
         query.exec();
-
     }
     else if(relationCheck.size() > 0)
     {

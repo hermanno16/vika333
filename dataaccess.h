@@ -45,7 +45,7 @@ public:
     //--Scientist other functions
     void addScientistToDataBase(Scientist newScientist);
     void removeScientistFromDatabase(int idOfScientist);
-    bool addScientistToComputer(int ID, int Cid);
+    bool addScientistToComputer(string scientistName, string computerName);
     void removeRelationFromDatabase(int id, int cID);
   //  void addScientistToComputer(int inputID, int inputCid);
     bool isScientistAlreadyInDatabase(string& inputName);

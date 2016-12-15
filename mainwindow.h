@@ -6,6 +6,7 @@
 //#include "addscientistwindow.h"
 #include "computer.h"
 #include <QMainWindow>
+#include <QMessageBox>
 
 using namespace std;
 

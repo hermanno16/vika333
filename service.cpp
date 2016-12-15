@@ -28,10 +28,6 @@ vector<Scientist> Service::getAllScientistsAtoZ()
     return allScientists;
 }
 
-
-
-
-
 vector<Scientist> Service::getAllScientistsZtoA()
 {
     vector<Scientist> allScientists;
@@ -48,6 +44,16 @@ vector<Scientist> Service::getAllScientistsByYearOfBirthAsc()
 
     return allScientists;
 }
+void Service::updateComputerInDataBase(Computer updatedComputer)
+{
+    _dAccess.updateComputerInDataBase(updatedComputer);
+}
+
+void Service::updateScientistInDataBase(Scientist updatedScientist)
+{
+    _dAccess.updateScientistInDataBase(updatedScientist);
+}
+
 vector<Scientist> Service::getAllScientistsByYearOfBirthDes()
 {
     vector<Scientist> allScientists;

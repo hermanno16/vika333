@@ -17,6 +17,61 @@ DataAccess::~DataAccess()
 }
 //-- Scientist --//
 //Scientist - SQL functions.
+
+/*
+QSqlQuery query;
+query.prepare("INSERT INTO Scientists (FirstName, YearOfBirth, YearOfDeath, Gender) "
+              "VALUES (:name, :yearofbirth, :yearofdeath, :gender)");
+
+query.bindValue(":name", QString::fromStdString(newScientist.getName()));
+query.bindValue(":yearofbirth", newScientist.getYearOfBirth());
+query.bindValue(":yearofdeath", QString::fromStdString(newScientist.getYearOfDeath()));
+query.bindValue(":gender", QString::fromStdString(newScientist.getGender()));
+query.exec();
+*/
+
+
+
+void DataAccess::updateScientistInDataBase(Scientist updatedScientist)
+{
+    QSqlQuery query;
+    QString id = QString::number(updatedScientist.getID());
+    QString name = QString::fromStdString(updatedScientist.getName());
+    QString yearOfBirth = QString::number(updatedScientist.getYearOfBirth());
+    QString yearOfDeath = QString::fromStdString(updatedScientist.getYearOfDeath());
+    QString gender = QString::fromStdString(updatedScientist.getGender());
+    QString info = QString::fromStdString(updatedScientist.getScientistInfo());
+
+    query.prepare("UPDATE Scientists set FirstName = '"+name+"',"
+                                                     " YearOfBirth = '"+yearOfBirth+"',"
+                                                     " YearOfDeath = '"+yearOfDeath+"', "
+                                                     " Gender = '"+gender+"', "
+                                                     " Information = '"+info+"' WHERE ID = '"+id+"'");
+
+    query.exec();
+}
+
+void DataAccess::updateComputerInDataBase(Computer updatedComputer)
+{
+    QSqlQuery query;
+    QString id = QString::number(updatedComputer.getId());
+    QString name = QString::fromStdString(updatedComputer.getName());
+    QString type = QString::fromStdString(updatedComputer.getType());
+    QString yearbuilt = QString::number(updatedComputer.getYearBuilt());
+    QString development = QString::fromStdString(updatedComputer.getDevelopment());
+    QString info = QString::fromStdString(updatedComputer.getComputerInfo());
+
+    query.prepare("UPDATE Computers set ComputerName = '"+name+"',"
+                                                     " Type = '"+type+"',"
+                                                     " YearBuilt = '"+yearbuilt+"', "
+                                                     " Development = '"+development+"', "
+                                                     " Information = '"+info+"' WHERE Cid = '"+id+"'");
+
+    query.exec();
+
+}
+
+
 vector<Scientist> DataAccess::getAllScientistInfoFromDataBase(QString queryCommand)
 {
     vector<Scientist> allScientists;

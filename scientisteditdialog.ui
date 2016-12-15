@@ -46,7 +46,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_add_scientist">
+  <widget class="QPushButton" name="pushButton_save_update_scientist">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -182,7 +182,7 @@
     <string>Female</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="cancel_edit_window">
    <property name="geometry">
     <rect>
      <x>10</x>

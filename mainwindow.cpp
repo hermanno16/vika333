@@ -204,11 +204,15 @@ void MainWindow::on_button_scientist_edit_clicked()
     Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
     int idOfSelectedScientist = currentlySelectedScientist.getID();
 
+
+
     scientistEditDialog scientisteditDialog;
+    scientisteditDialog.setIDofCurrentScientist(idOfSelectedScientist);
     scientisteditDialog.displayInfo(currentlySelectedScientist.getName(),
                                     currentlySelectedScientist.getGender(),
                                     currentlySelectedScientist.getYearOfBirth(),
-                                    currentlySelectedScientist.getYearOfDeath());
+                                    currentlySelectedScientist.getYearOfDeath(),
+                                    currentlySelectedScientist.getScientistInfo());
 
     scientisteditDialog.exec();
     refreshTable();
@@ -244,11 +248,13 @@ void MainWindow::on_button_computer_edit_clicked()
     int idOfSelectedComputer = currentlySelectedComputer.getId();
 
     ComputerEditDialog computerEditDialog;
+    computerEditDialog.setIDofCurrentComputer(idOfSelectedComputer);
     computerEditDialog.displayInfo(currentlySelectedComputer.getName(),
                                    currentlySelectedComputer.getType(),
                                    currentlySelectedComputer.getYearBuilt(),
                                    currentlySelectedComputer.getDevelopment(),
                                    currentlySelectedComputer.getComputerInfo());
+
 
     computerEditDialog.exec();
     refreshTable();

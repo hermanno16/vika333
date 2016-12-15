@@ -186,7 +186,7 @@
     <string>Name:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="computer_Add_Info">
+  <widget class="QLineEdit" name="computer_edit_Info">
    <property name="geometry">
     <rect>
      <x>110</x>

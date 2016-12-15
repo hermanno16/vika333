@@ -59,6 +59,12 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
         return;
     }
 
+    else if(newScientist.getYearOfDeath().length() == 0)
+    {
+        QMessageBox::critical(this, "Error", "the year of death cannot be empty!");
+        return;
+    }
+
     _service.fixInputYearOfDeath(newScientist);
 
     if(!_service.isYearOfBirthOfScientistValid(newScientist))
@@ -74,15 +80,11 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
         QMessageBox::critical(this, "Error", "the scientist is already in database!");
         return;
     }
-    else if(newScientist.getYearOfDeath().length() == 0)
-    {
-        QMessageBox::critical(this, "Error", "the year of death cannot be empty!");
-        return;
-    }
+
 
      _service.addScientistToData(newScientist);
 
-     QMessageBox::Accepted;
+
     //If scientist was added. Window will close.
     this->close();
 }

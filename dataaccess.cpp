@@ -482,7 +482,9 @@ vector<Scientist> DataAccess::connectComputerToScientist(int idNumber)
 
     QSqlQuery query;
 
-    query.prepare("SELECT * FROM Scientists, ConnectionTable WHERE Scientists.ID = ConnectionTable.ID AND ConnectionTable.Cid =  (:something)");
+    query.prepare("SELECT * FROM Scientists, ConnectionTable "
+                  "WHERE Scientists.ID = ConnectionTable.ID "
+                  "AND ConnectionTable.Cid =  (:something)");
     query.bindValue(":something", idNumber);
     query.exec();
 
@@ -516,7 +518,9 @@ vector<Computer> DataAccess::connectScientistToComputer(int idNumber)
 
     QSqlQuery query;
 
-    query.prepare("SELECT * FROM Computers, ConnectionTable WHERE Computers.Cid = ConnectionTable.Cid AND ConnectionTable.ID = (:something)");
+    query.prepare("SELECT * FROM Computers, ConnectionTable "
+                  "WHERE Computers.Cid = ConnectionTable.Cid "
+                  "AND ConnectionTable.ID = (:something)");
     query.bindValue(":something", idNumber);
     query.exec();
 

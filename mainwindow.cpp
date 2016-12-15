@@ -146,10 +146,15 @@ void MainWindow::on_button_add_computer_clicked()
 void MainWindow::on_button_info_computer_clicked()
 {
     int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+
     Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
     int idOfSelectedComputer = currentlySelectedComputer.getId();
 
     ComputerInfoDialog computerInfoDialog;
+
+    computerInfoDialog.relatedScientists(idOfSelectedComputer);
+
     computerInfoDialog.displayInfo(currentlySelectedComputer.getName(),
                                    currentlySelectedComputer.getType(),
                                    currentlySelectedComputer.getYearBuilt(),
@@ -157,6 +162,7 @@ void MainWindow::on_button_info_computer_clicked()
                                    currentlySelectedComputer.getComputerInfo());
 
     computerInfoDialog.exec();
+
     refreshTable();
 
 
@@ -191,6 +197,8 @@ void MainWindow::on_button_scientist_info_clicked()
                                     currentlySelectedScientist.getScientistInfo());
 
     scientistInfoDialog.exec();
+
+    refreshTable();
 }
 void MainWindow::on_scientist_table_clicked(const QModelIndex &index)
 {

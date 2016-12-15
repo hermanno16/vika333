@@ -276,9 +276,9 @@ string Service::getComputerName(int idNumber)
     return aComputer;
 }
 //-- Valid functions --//
-void Service::addScientistToData(Scientist newScientist)
+void Service::addScientistToData(string inputName, string inputYearOfBirth, string inputYearOfDeath, string inputGender)
 {
-    _dAccess.addScientistToDataBase(newScientist);
+    _dAccess.addScientistToDataBase(inputName, inputYearOfBirth, inputYearOfDeath, inputGender);
 }
 
 void Service::addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment, string inputInfo)

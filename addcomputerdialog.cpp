@@ -77,6 +77,7 @@ void addComputerDialog::on_pushButton_add_computer_clicked()
                                    computerType.toStdString(),
                                    computerDevelopment.toStdString(),
                                    computerInfo.toStdString());
+        this->close();
     }
 }
 

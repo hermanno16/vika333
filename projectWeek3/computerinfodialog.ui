@@ -42,6 +42,7 @@
   <widget class="QLabel" name="label_related_scientists">
    <property name="geometry">
     <rect>
+<<<<<<< HEAD
      <x>8</x>
      <y>350</y>
      <width>191</width>
@@ -50,7 +51,17 @@
    </property>
    <property name="toolTip">
     <string>Cancel</string>
-     </property>
+=======
+     <x>410</x>
+     <y>10</y>
+     <width>171</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Related scientists:</string>
+>>>>>>> bad12db68457f59d89d4e4928f4a909897152aa6
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -71,6 +82,11 @@
      <height>201</height>
     </rect>
    </property>
+<<<<<<< HEAD
+   <property name="text">
+    <string/>
+   </property>
+=======
    <property name="columnCount">
     <number>1</number>
    </property>
@@ -84,7 +100,7 @@
     <bool>false</bool>
    </attribute>
    <column/>
-
+>>>>>>> bad12db68457f59d89d4e4928f4a909897152aa6
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">

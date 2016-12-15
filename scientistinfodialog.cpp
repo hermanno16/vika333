@@ -25,7 +25,6 @@ void ScientistInfoDialog::displayInfo(string name,
     ui->info_display_gender->setText(QString::fromStdString(gender));
     ui->info_display_year_of_birth->setText(QString::number(yearOfBirth));
     ui->info_display_year_of_death->setText(QString::fromStdString(yearOfDeath));
-
     ui->info_scientist_info->insertPlainText(QString::fromStdString(scientistInfo));
 }
 

@@ -19,6 +19,9 @@ public:
     ~scientistEditDialog();
     void displayInfo(std::string name, string gender, int yearOfBirth, string yearOfDeath);
 
+private slots:
+    void on_pushButton_edit_scientist_clicked();
+
 private:
     Ui::scientistEditDialog *ui;
 };

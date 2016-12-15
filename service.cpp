@@ -281,105 +281,84 @@ void Service::addScientistToData(Scientist newScientist)
     _dAccess.addScientistToDataBase(newScientist);
 }
 
-void Service::addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment, string inputInfo)
+void Service::addComputerToData(Computer newComputer)
 {
-    _dAccess.addComputerToDataBase(inputName, inputYearBuilt, inputType, inputDevelopment);
+    _dAccess.addComputerToDataBase(newComputer);
 }
 void Service::removeComputerFromDataBase(int idOfComputer)
 {
     _dAccess.removeComputerFromDatabase(idOfComputer);
 }
 
-bool Service::inputNameValid(string input)
+bool Service::isScientistAlreadyInDatabase(Scientist newScientist)
 {
-    if(atoi(input.c_str()) && input.length() < 40)
+    if(_dAccess.isScientistAlreadyInDatabase(newScientist))
     {
-        return false;
+        return true;
     }
 
-    return true;
-}
-/*
- * Functions to check if information about scientist who is about to be added is valid.
- * */
-bool Service::isAddScientistValid(string name, string yearOfBirth, string yearOfDeath, string gender)
-{
-    bool checkIfNameIsAlreadyInDataBase = true;
-    bool checkName = false;
-    bool checkGender = false;
-    bool checkYearOfBirth = false;
-    bool checkYearOfDeath = false;
-
-    if(_dAccess.isScientistAlreadyInDatabase(name) == true)
-    {
-        checkIfNameIsAlreadyInDataBase = false;
-    }
-
-    if(name.length() > 0)
-    {
-        checkName = true;
-    }
-
-    if(gender.length() > 3)
-    {
-        for(unsigned int i = 0; i < gender.size(); i++)
-        {
-            gender.at(i) = tolower(gender.at(i));
-        }
-
-        if(gender == "male" || gender == "female")
-        {
-            checkGender = true;
-        }
-    }
-
-    if(atoi(yearOfBirth.c_str()) <= YEARTODAY && atoi(yearOfBirth.c_str()) > 0)
-    {
-        checkYearOfBirth = true;
-    }
-
-    if(yearOfDeath == "N/A" || (atoi(yearOfDeath.c_str()) > atoi(yearOfBirth.c_str())) || (atoi(yearOfDeath.c_str())) <= YEARTODAY)
-    {
-        checkYearOfDeath = true;
-    }
-
-    return (checkIfNameIsAlreadyInDataBase && checkName && checkGender && checkYearOfBirth && checkYearOfDeath);
-
+    return false;
 }
 
-void Service::fixInputNameScientist(string& inputName)
+
+bool Service::isYearOfBirthOfScientistValid(Scientist newScientist)
 {
-    inputName = inputName.substr(0,40);
+    bool yearOfBirthCheck1 = false;
+    bool yearOfBirthCheck2 = false;
 
-    inputName.at(0) = toupper(inputName.at(0));
 
-    for(unsigned int i = 1; i < inputName.size(); i++)
+    if(newScientist.getYearOfBirth() <= YEARTODAY)
     {
-        if (inputName.at(i - 1) == ' ')
+        yearOfBirthCheck1 = true;
+    }
+
+    if(newScientist.getYearOfBirth() <= atoi(newScientist.getYearOfDeath().c_str()))
+    {
+        yearOfBirthCheck2 = true;
+    }
+
+    if(newScientist.getYearOfDeath() == "N/A")
+    {
+       yearOfBirthCheck2 = true;
+    }
+
+    return (yearOfBirthCheck1 && yearOfBirthCheck2);
+}
+void Service::fixInputYearOfDeath(Scientist& newScientist)
+{
+    string yearOfDeath = newScientist.getYearOfDeath();
+
+    yearOfDeath.at(0) = toupper(yearOfDeath.at(0));
+    yearOfDeath.at(2) = toupper(yearOfDeath.at(2));
+
+    newScientist.setYearOfDeath(yearOfDeath);
+}
+
+void Service::fixInputNameScientist(Scientist& newScientist)
+{
+    string name = newScientist.getName();
+
+    name = name.substr(0,40);
+    name.at(0) = toupper(name.at(0));
+
+    for(unsigned int i = 1; i < name.size(); i++)
+    {
+        if (name.at(i - 1) == ' ')
         {
-            inputName.at(i) = toupper(inputName.at(i));
+            name.at(i) = toupper(name.at(i));
         }
         else
         {
-            inputName.at(i) = tolower(inputName.at(i));
+            name.at(i) = tolower(name.at(i));
         }
     }
+    newScientist.setName(name);
 }
-void Service::fixInputGenderScientist(string& inputGender)
-{
-    //Max size of input is 6, if string is longer,the rest will be cut off.
-    inputGender = inputGender.substr(0,6);
-    //First letter to upper case.
-    inputGender.at(0) = toupper(inputGender.at(0));
-    //Rest of the letters to lower case.
-    for(unsigned int i = 1; i < inputGender.size(); i++)
-    {
-        inputGender.at(i) = tolower(inputGender.at(i));
 
-    }
-}
-void Service::fixInputTypeComputer(string& inputType)
+void Service::fixAddComputerType(Computer& newComputer)
 {
+    string inputType = newComputer.getType();
+
     inputType = inputType.substr(0,21);
 
     inputType.at(0) = toupper(inputType.at(0));
@@ -387,74 +366,49 @@ void Service::fixInputTypeComputer(string& inputType)
     for(unsigned int i = 1; i < inputType.size(); i++)
     {
         inputType.at(i) = tolower(inputType.at(i));
-
     }
 
+    newComputer.setType(inputType);
 }
-void Service::fixInputDevelopmentComputer(string& inputDevelopment)
+
+bool Service::isAddComputerYearBuiltValid(Computer newComputer)
 {
+    int yearBuilt = newComputer.getYearBuilt();
 
-    inputDevelopment = inputDevelopment.substr(0,9);
-
-    inputDevelopment.at(0) = toupper(inputDevelopment.at(0));
-
-    for(unsigned int i = 1; i < inputDevelopment.size(); i++)
+    if((yearBuilt <= YEARTODAY) && (yearBuilt > 0))
     {
-        inputDevelopment.at(i) = tolower(inputDevelopment.at(i));
-
+        return true;
     }
-}
-bool Service::isAddComputerValid(string name, string yearBuilt, string type, string development)
-{
-    bool checkIfNameIsAlreadyInDataBase = true;
-    bool checkName = false;
-    bool checkYearBuilt = false;
-    bool checkType = false;
-    bool checkDevelopment = false;
 
-    if(_dAccess.isComputerNameAlreadyInDatabase(name) == true)
+    return false;
+}
+bool Service::isAddComputerNameValid(Computer newComputer)
+{
+    bool check1 = false;
+    bool check2 = false;
+
+    string name = newComputer.getName();
+
+    if(!_dAccess.isComputerNameAlreadyInDatabase(name))
     {
-        checkIfNameIsAlreadyInDataBase = false;
+        check1 = true;
     }
 
     if(name.length() > 0)
     {
-        checkName = true;
+        check2 = true;
     }
 
-    if(atoi(yearBuilt.c_str()) <= YEARTODAY && atoi(yearBuilt.c_str()) > 0)
-    {
-        checkYearBuilt = true;
-    }
-
-    if(type.length() > 6)
-    {
-        //Switch to lower case to check if input matches the correct string.
-        for(unsigned int i = 0; i < type.size(); i++)
-        {
-            type.at(i) = tolower(type.at(i));
-        }
-
-        if(type == "electronic" || type == "mechanical" || type == "electronic/mechanical" || type == "transistor" || type == "microcomputer" || type == "ternary")
-        {
-            checkType = true;
-        }
-    }
-
-    if(development.length() > 7)
-    {
-        for(unsigned int i = 0; i < development.size(); i++)
-        {
-            development.at(i) = tolower(development.at(i));
-        }
-
-        if(development == "developed" || development == "original")
-        {
-            checkDevelopment = true;
-        }
-    }
-
-    return (checkIfNameIsAlreadyInDataBase && checkName && checkYearBuilt && checkType && checkDevelopment);
-
+    return(check1 && check2);
 }
+bool Service::isAddComputerTypeValid(Computer newComputer)
+{
+    string type = newComputer.getType();
 
+    if(type.length() > 0)
+    {
+        return true;
+    }
+
+    return false;
+}

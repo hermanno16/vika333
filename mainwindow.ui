@@ -42,7 +42,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -525,6 +525,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_info_computer">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -568,6 +571,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_computer_edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -585,6 +591,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_computer_remove">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -641,6 +650,25 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>search_box</tabstop>
+  <tabstop>scientist_table</tabstop>
+  <tabstop>pushButton_add_new_scientist</tabstop>
+  <tabstop>button_add_scientist</tabstop>
+  <tabstop>button_scientist_edit</tabstop>
+  <tabstop>button_scientist_remove</tabstop>
+  <tabstop>button_scientist_info</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>search_box_computer</tabstop>
+  <tabstop>computer_table</tabstop>
+  <tabstop>pushButton_add_new_scientist_2</tabstop>
+  <tabstop>button_add_computer</tabstop>
+  <tabstop>button_computer_edit</tabstop>
+  <tabstop>button_computer_remove</tabstop>
+  <tabstop>button_info_computer</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

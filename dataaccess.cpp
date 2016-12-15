@@ -161,8 +161,6 @@ void DataAccess::removeScientistFromDatabase(int idOfScientist)
     query.bindValue(":id",idOfScientist);
 
     query.exec();
-
-
 }
 void DataAccess::removeRelationFromDatabase(int id, int cID)
 {
@@ -172,9 +170,9 @@ void DataAccess::removeRelationFromDatabase(int id, int cID)
     query.bindValue(":cid", cID);
     query.exec();
 }
-bool DataAccess::isScientistAlreadyInDatabase(string& inputName)
+bool DataAccess::isScientistAlreadyInDatabase(Scientist newScientist)
 {
-    QString qSearchName = QString::fromStdString(inputName);
+    QString qSearchName = QString::fromStdString(newScientist.getName());
 
     QSqlQuery query;
     query.prepare("SELECT * FROM Scientists WHERE (FirstName) LIKE '%"+qSearchName+"%'");
@@ -279,21 +277,23 @@ bool DataAccess::addScientistToComputer(string scientistName, string computerNam
 }
 //-- Computers--//
 //Computers - SQL functions.
-void DataAccess::addComputerToDataBase(string inputName, string inputYearBuilt, string inputType, string inputDevelopment)
+void DataAccess::addComputerToDataBase(Computer newComputer)
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO Computers (ComputerName, YearBuilt, Type, Development) VALUES (:computername, :yearbuilt, :type, :development)");
+    query.prepare("INSERT INTO Computers (ComputerName, YearBuilt, Type, Development, Information) "
+                  "VALUES (:computername, :yearbuilt, :type, :development, :information)");
 
-    query.bindValue(":computername", QString::fromStdString(inputName));
-    query.bindValue(":yearbuilt",   atoi(inputYearBuilt.c_str()));
-    query.bindValue(":type", QString::fromStdString(inputType));
-    query.bindValue(":development", QString::fromStdString(inputDevelopment));
+    query.bindValue(":computername", QString::fromStdString(newComputer.getName()));
+    query.bindValue(":yearbuilt", newComputer.getYearBuilt());
+    query.bindValue(":type", QString::fromStdString(newComputer.getType()));
+    query.bindValue(":development", QString::fromStdString(newComputer.getDevelopment()));
+    query.bindValue(":information", QString::fromStdString(newComputer.getComputerInfo()));
     query.exec();
 }
 void DataAccess::removeComputerFromDatabase(int idOfComputer)
 {
     QSqlQuery query;
-    query.prepare("DELETE FROM Computers where CID = (:cid)");
+    query.prepare("DELETE FROM Computers where Cid = (:cid)");
     query.bindValue(":cid",idOfComputer);
     query.exec();
 }
@@ -312,14 +312,15 @@ vector<Computer> DataAccess::getAllComputerInfoFromDataBase(QString queryCommand
         QString type = query.value(query.record().indexOf("Type")).toString();
         int yearBuilt = query.value(query.record().indexOf("YearBuilt")).toUInt();
         QString development = query.value(query.record().indexOf("Development")).toString();
-
+        QString information = query.value(query.record().indexOf("Information")).toString();
 
         Computer newComputer(
                     id,
                     name.toStdString(),
                     type.toStdString(),
                     yearBuilt,
-                    development.toStdString()
+                    development.toStdString(),
+                    information.toStdString()
                     );
 
         allComputers.push_back(newComputer);
@@ -406,13 +407,15 @@ vector<Computer> DataAccess::searchForComputers(string searchString)
         QString type = query.value(query.record().indexOf("Type")).toString();
         int yearBuilt = query.value(query.record().indexOf("YearBuilt")).toUInt();
         QString development = query.value(query.record().indexOf("Development")).toString();
+        QString information = query.value(query.record().indexOf("Information")).toString();
 
         Computer newComputer(
                     id,
                     name.toStdString(),
                     type.toStdString(),
                     yearBuilt,
-                    development.toStdString()
+                    development.toStdString(),
+                    information.toStdString()
                     );
 
         allComputers.push_back(newComputer);
@@ -420,7 +423,6 @@ vector<Computer> DataAccess::searchForComputers(string searchString)
 
     return allComputers;
 }
-
 string DataAccess::getComputerName(int idNumber)
 {
     int id = idNumber;
@@ -459,7 +461,6 @@ string DataAccess::getScientistName(int idNumber)
 
     return aScientist;
 }
-
 void DataAccess::startDatabase()
 {
     _dataBaseMain = QSqlDatabase::addDatabase("QSQLITE");
@@ -534,13 +535,15 @@ vector<Computer> DataAccess::connectScientistToComputer(int idNumber)
         QString type = query.value(query.record().indexOf("Type")).toString();
         int yearBuilt = query.value(query.record().indexOf("YearBuilt")).toUInt();
         QString development = query.value(query.record().indexOf("Development")).toString();
+        QString computerInfo = query.value(query.record().indexOf("Information")).toString();
 
         Computer newComputer(
                     id,
                     name.toStdString(),
                     type.toStdString(),
                     yearBuilt,
-                    development.toStdString()
+                    development.toStdString(),
+                    computerInfo.toStdString()
                     );
 
         allComputers.push_back(newComputer);

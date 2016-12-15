@@ -51,15 +51,22 @@ public:
     bool addRelation(string scientistName, string computerName);
     void removeRelationFromDatabase(int inputID,int inputCid);
     //--Check functions--//
-    bool isAddScientistValid(string name, string yearOfBirth, string yearOfDeath, string gender);
+    bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);
+    bool isScientistAlreadyInDatabase(Scientist newScientist);
+    bool isYearOfBirthOfScientistValid(Scientist newScientist);
+    bool isYearOfDeathOfScientistValid(string yearOfBirth);
     bool isAddComputerValid(string name, string yearBuilt, string type, string development);
     void addScientistToData(Scientist newScientist);
-    void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment, string inputInfo);
+    void addComputerToData(Computer newComputer);
     bool inputNameValid(string input);
-    void fixInputNameScientist(string& inputName);
+    void fixInputNameScientist(Scientist& newScientist);
     void fixInputGenderScientist(string& inputGender);
-    void fixInputTypeComputer(string& inputType);
-    void fixInputDevelopmentComputer(string& inputDevelopment);
+    void fixInputYearOfDeath(Scientist &newScientist);
+
+    void fixAddComputerType(Computer& newComputer);
+    bool isAddComputerYearBuiltValid(Computer newComputer);
+    bool isAddComputerNameValid(Computer newComputer);
+    bool isAddComputerTypeValid(Computer newComputer);
     //--Open database--//
     void openDataBase();
     void closeDataBase();

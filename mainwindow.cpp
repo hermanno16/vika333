@@ -38,11 +38,16 @@ void MainWindow::refreshTable()
     ui->button_scientist_remove->setEnabled(false);
     ui->button_scientist_info->setEnabled(false);
     ui->button_scientist_edit->setEnabled(false);
+    ui->button_computer_edit->setEnabled(false);
+    ui->button_computer_remove->setEnabled(false);
+    ui->button_info_computer->setEnabled(false);
 }
 
 
 void MainWindow::displayScientists(vector<Scientist> scientists)
 {
+    ui->scientist_table->setSortingEnabled(false);
+
     ui->scientist_table->clearContents();
     ui->scientist_table->setRowCount(scientists.size());
     ui->scientist_table->setColumnHidden(0, true);
@@ -70,6 +75,7 @@ void MainWindow::displayScientists(vector<Scientist> scientists)
     }
 
     currentlyDisplayedScientists = scientists;
+    ui->scientist_table->setSortingEnabled(true);
 }
 
 void MainWindow::on_search_box_textChanged()
@@ -77,7 +83,9 @@ void MainWindow::on_search_box_textChanged()
     string userInput = ui->search_box->text().toStdString();
 
     vector<Scientist> scientists = _service.searchForScientists(userInput);
+    refreshTable();
     displayScientists(scientists);
+
 }
 
 
@@ -96,6 +104,8 @@ void MainWindow::displayAllComputers()
 }
 void MainWindow::displayComputers(vector<Computer> computers)
 {
+    ui->computer_table->setSortingEnabled(false);
+
     ui->computer_table->clearContents();
     ui->computer_table->setRowCount(computers.size());
     ui->computer_table->setColumnHidden(0, true);
@@ -121,6 +131,10 @@ void MainWindow::displayComputers(vector<Computer> computers)
         ui->computer_table->setItem(row, 3, new QTableWidgetItem(yearbuilt));
         ui->computer_table->setItem(row, 4, new QTableWidgetItem(development));
     }
+
+    currentlyDisplayedComputers = computers;
+    ui->computer_table->setSortingEnabled(true);
+
 }
 
 
@@ -209,4 +223,22 @@ void MainWindow::on_add_relation_clicked()
     AddRelation addRelation;
 
     addRelation.exec();
+}
+
+void MainWindow::on_button_computer_remove_clicked()
+{
+    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+    _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+
+    refreshTable();
+}
+
+void MainWindow::on_computer_table_clicked(const QModelIndex &index)
+{
+    ui->button_computer_edit->setEnabled(true);
+    ui->button_computer_remove->setEnabled(true);
+    ui->button_info_computer->setEnabled(true);
 }

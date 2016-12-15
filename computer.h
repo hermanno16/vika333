@@ -8,15 +8,18 @@ class Computer
 {
 public:
     //--Constructors--//
-    Computer();
-    Computer(int ID, string name, string type, int yearBuilt, string development);
+    Computer(){}
+    Computer(string name, string type, int yearBuilt, string development, string computerInfo);
+    Computer(int ID, string name, string type, int yearBuilt, string development, string computerInfo);
     //--Set functions--//
+    void setComputerInfo(string computerInfo);
     void setId(int ID);
     void setName(string name);
     void setType(string type);
     void setYearBuilt(int yearBuilt);
     void setDevelopment(string developement);
     //--Get funcitons--//
+    string getComputerInfo();
     int getId() const;
     string getName() const;
     string getType() const;
@@ -25,6 +28,7 @@ public:
 
 private:
     int    _id;
+    string _computerInfo;
     string _name;
     string _type;
     int    _yearBuilt;

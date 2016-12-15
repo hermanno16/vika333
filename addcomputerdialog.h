@@ -1,6 +1,8 @@
 #ifndef ADDCOMPUTERDIALOG_H
 #define ADDCOMPUTERDIALOG_H
 
+#include "service.h"
+
 #include <iostream>
 #include <string>
 #include <QDialog>
@@ -39,6 +41,7 @@ private slots:
 
 private:
     Ui::addComputerDialog *ui;
+    Service _service;
 };
 
 #endif // ADDCOMPUTERDIALOG_H

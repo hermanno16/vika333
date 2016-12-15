@@ -8,6 +8,7 @@
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
 #include "scientisteditdialog.h"
+#include "addrelation.h"
 #include <QModelIndex>
 
 using namespace std;
@@ -29,7 +30,6 @@ void MainWindow::displayAllScientists()
 {
     vector<Scientist> scientists = _service.getAllScientistsAtoZ();
     displayScientists(scientists);
-
 }
 void MainWindow::refreshTable()
 {
@@ -180,9 +180,9 @@ void MainWindow::on_button_scientist_info_clicked()
 
     int idOfSelectedScientist = currentlySelectedScientist.getID();
 
-
-
     ScientistInfoDialog scientistInfoDialog;
+
+    scientistInfoDialog.relatedComputers(idOfSelectedScientist);
 
     scientistInfoDialog.displayInfo(currentlySelectedScientist.getName(),
                                     currentlySelectedScientist.getGender(),
@@ -213,6 +213,14 @@ void MainWindow::on_button_scientist_edit_clicked()
     scientisteditDialog.exec();
     refreshTable();
 }
+
+void MainWindow::on_add_relation_clicked()
+{
+    AddRelation addRelation;
+
+    addRelation.exec();
+}
+
 void MainWindow::on_button_computer_remove_clicked()
 {
     int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();

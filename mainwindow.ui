@@ -20,6 +20,9 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <widget class="QTabWidget" name="tabWidget">
     <property name="enabled">
      <bool>true</bool>
@@ -324,7 +327,20 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/1481744709_icon-111-search.ico</normaloff>../icons/1481744709_icon-111-search.ico</iconset>
+        <normaloff>icons/1481744709_icon-111-search.ico</normaloff>icons/1481744709_icon-111-search.ico</iconset>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_relation">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>460</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>add relation</string>
       </property>
      </widget>
     </widget>
@@ -620,7 +636,7 @@
       </property>
       <property name="icon">
        <iconset>
-        <normaloff>../icons/1481744709_icon-111-search.ico</normaloff>../icons/1481744709_icon-111-search.ico</iconset>
+        <normaloff>icons/1481744709_icon-111-search.ico</normaloff>icons/1481744709_icon-111-search.ico</iconset>
       </property>
      </widget>
     </widget>

@@ -48,7 +48,7 @@ public:
     //Connection tables
     vector<Scientist> connectComputerToScientist(int idNumber);
     vector<Computer> connectScientistToComputer(int idNumber);
-    bool addRelation(int inputID,int inputCid);
+    bool addRelation(string scientistName, string computerName);
     void removeRelationFromDatabase(int inputID,int inputCid);
     //--Check functions--//
     bool isAddScientistValid(string name, string gender, string yearOfBirth, string yearOfDeath);

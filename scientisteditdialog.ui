@@ -206,17 +206,6 @@
    </property>
   </widget>
  </widget>
- <tabstops>
-  <tabstop>edit_scientist_name</tabstop>
-  <tabstop>edit_scientist_year_of_birth</tabstop>
-  <tabstop>edit_scientist_year_of_death</tabstop>
-  <tabstop>radioButton_edit_if_female</tabstop>
-  <tabstop>radioButton_edit_if_male</tabstop>
-  <tabstop>edit_photo_button</tabstop>
-  <tabstop>edit_text</tabstop>
-  <tabstop>pushButton_add_scientist</tabstop>
-  <tabstop>pushButton_2</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

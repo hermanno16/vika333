@@ -1,4 +1,3 @@
-
 #include "service.h"
 #include <cctype>
 
@@ -152,9 +151,9 @@ vector<Computer> Service::connectScientistToComputer(int idNumber)
 
     return allComputers;
 }
-bool Service::addRelation(int inputID,int inputCid)
+bool Service::addRelation(string scientistName, string computerName)
 {
-    bool relation = _dAccess.addScientistToComputer(inputID,inputCid);
+    bool relation = _dAccess.addScientistToComputer(scientistName, computerName);
 
     return relation;
 }
@@ -413,6 +412,3 @@ bool Service::isAddComputerTypeValid(Computer newComputer)
 
     return false;
 }
-
-
-

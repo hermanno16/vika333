@@ -35,6 +35,10 @@ void addComputerDialog::on_add_Photo_computer_Button_clicked()
             ui->label_computer_photo->setPixmap(pixmap);
             ui->label_computer_photo->setScaledContents(true);
 
+            QFile computerPhoto(QString::fromStdString(filePath));
+            if (!computerPhoto.open(QIODevice::ReadOnly)) return;
+            QByteArray computerPhotoArray = computerPhoto.readAll();
+
         }
         else
         {

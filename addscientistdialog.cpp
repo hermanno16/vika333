@@ -3,6 +3,8 @@
 #include "service.h"
 #include "dataaccess.h"
 #include "scientist.h"
+#include <QFileDialog>
+
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
@@ -53,4 +55,23 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked(){
 void AddScientistDialog::on_cancel_add_scientist_window_clicked()
 {
     this->close();
+}
+
+void AddScientistDialog::on_pushButton_3_clicked()
+{
+    string filePath = QFileDialog::getOpenFileName(
+                this,
+                "Search for images",
+                "",
+                "Image files (*.png *.jpg)"
+                ).toStdString();
+    if (filePath.length())
+    {
+        QPixmap pixmap(QString::fromStdString(filePath));
+        ui->label_scientist_photo->setPixmap(pixmap);
+    }
+    else
+    {
+
+    }
 }

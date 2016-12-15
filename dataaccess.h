@@ -71,7 +71,7 @@ public:
     string getComputerName(int idNumber);
     string getScientistName(int idNumber);
     //--Computer other functions--//
-    void addComputerToDataBase(string inputName, string inputYearBuilt, string inputType, string inputDevelopment);
+    void addComputerToDataBase(Computer newComputer);
     void removeComputerFromDatabase(int idOfComputer);
     bool isComputerNameAlreadyInDatabase(string& inputName);
     //--Scientists and computers--//

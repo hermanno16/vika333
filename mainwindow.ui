@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>671</height>
+    <width>788</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -42,7 +42,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -130,8 +130,11 @@
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
       <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+       <enum>QAbstractItemView::SelectItems</enum>
       </property>
       <property name="showGrid">
        <bool>false</bool>
@@ -509,6 +512,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_info_computer">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>240</x>
@@ -552,6 +558,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_computer_edit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>80</x>
@@ -569,6 +578,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="button_computer_remove">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>160</x>

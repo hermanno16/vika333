@@ -38,6 +38,9 @@ void MainWindow::refreshTable()
     ui->button_scientist_remove->setEnabled(false);
     ui->button_scientist_info->setEnabled(false);
     ui->button_scientist_edit->setEnabled(false);
+    ui->button_computer_edit->setEnabled(false);
+    ui->button_computer_remove->setEnabled(false);
+    ui->button_info_computer->setEnabled(false);
 }
 
 
@@ -121,6 +124,7 @@ void MainWindow::displayComputers(vector<Computer> computers)
         ui->computer_table->setItem(row, 3, new QTableWidgetItem(yearbuilt));
         ui->computer_table->setItem(row, 4, new QTableWidgetItem(development));
     }
+    currentlyDisplayedComputers = computers;
 }
 
 
@@ -173,7 +177,8 @@ void MainWindow::on_button_scientist_info_clicked()
     scientistInfoDialog.displayInfo(currentlySelectedScientist.getName(),
                                     currentlySelectedScientist.getGender(),
                                     currentlySelectedScientist.getYearOfBirth(),
-                                    currentlySelectedScientist.getYearOfDeath());
+                                    currentlySelectedScientist.getYearOfDeath(),
+                                    currentlySelectedScientist.getScientistInfo());
 
     scientistInfoDialog.exec();
 }
@@ -204,3 +209,21 @@ void MainWindow::on_button_scientist_edit_clicked()
 }
 
 
+
+void MainWindow::on_button_computer_remove_clicked()
+{
+    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+
+    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+
+    _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+
+    refreshTable();
+}
+
+void MainWindow::on_computer_table_clicked(const QModelIndex &index)
+{
+    ui->button_computer_edit->setEnabled(true);
+    ui->button_computer_remove->setEnabled(true);
+    ui->button_info_computer->setEnabled(true);
+}

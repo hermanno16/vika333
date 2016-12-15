@@ -4,6 +4,9 @@
 #include "dataaccess.h"
 #include "scientist.h"
 #include <QMessageBox>
+#include <QFileDialog>
+
+
 
 AddScientistDialog::AddScientistDialog(QWidget *parent) :
     QDialog(parent),
@@ -25,7 +28,8 @@ AddScientistDialog::~AddScientistDialog()
     delete ui;
 }
 
-void AddScientistDialog::on_pushButton_add_scientist_clicked(){
+void AddScientistDialog::on_pushButton_add_scientist_clicked()
+{
 
     Scientist newScientist;
 
@@ -33,7 +37,6 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked(){
     newScientist.setYearOfBirth((ui->input_scientist_year_of_birth->text()).toInt());
     newScientist.setYearOfDeath((ui->input_scientist_year_of_death->text()).toStdString());
     string gender;
-
 
     if(ui->radioButton_if_male->isChecked())
     {
@@ -89,4 +92,23 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked(){
 void AddScientistDialog::on_cancel_add_scientist_window_clicked()
 {
     this->close();
+}
+
+void AddScientistDialog::on_pushButton_3_clicked()
+{
+    string filePath = QFileDialog::getOpenFileName(
+                this,
+                "Search for images",
+                "",
+                "Image files (*.png *.jpg)"
+                ).toStdString();
+    if (filePath.length())
+    {
+        QPixmap pixmap(QString::fromStdString(filePath));
+        ui->label_scientist_photo->setPixmap(pixmap);
+    }
+    else
+    {
+
+    }
 }

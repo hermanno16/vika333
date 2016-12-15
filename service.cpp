@@ -1,3 +1,4 @@
+
 #include "service.h"
 #include <cctype>
 
@@ -281,9 +282,9 @@ void Service::addScientistToData(Scientist newScientist)
     _dAccess.addScientistToDataBase(newScientist);
 }
 
-void Service::addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment)
+void Service::addComputerToData(Computer newComputer)
 {
-    _dAccess.addComputerToDataBase(inputName, inputYearBuilt, inputType, inputDevelopment);
+    _dAccess.addComputerToDataBase(newComputer);
 }
 void Service::removeComputerFromDataBase(int idOfComputer)
 {
@@ -355,8 +356,10 @@ void Service::fixInputNameScientist(Scientist& newScientist)
     newScientist.setName(name);
 }
 
-void Service::fixInputTypeComputer(string& inputType)
+void Service::fixAddComputerType(Computer& newComputer)
 {
+    string inputType = newComputer.getType();
+
     inputType = inputType.substr(0,21);
 
     inputType.at(0) = toupper(inputType.at(0));
@@ -364,74 +367,52 @@ void Service::fixInputTypeComputer(string& inputType)
     for(unsigned int i = 1; i < inputType.size(); i++)
     {
         inputType.at(i) = tolower(inputType.at(i));
-
     }
 
+    newComputer.setType(inputType);
 }
-void Service::fixInputDevelopmentComputer(string& inputDevelopment)
+
+bool Service::isAddComputerYearBuiltValid(Computer newComputer)
 {
+    int yearBuilt = newComputer.getYearBuilt();
 
-    inputDevelopment = inputDevelopment.substr(0,9);
-
-    inputDevelopment.at(0) = toupper(inputDevelopment.at(0));
-
-    for(unsigned int i = 1; i < inputDevelopment.size(); i++)
+    if((yearBuilt <= YEARTODAY) && (yearBuilt > 0))
     {
-        inputDevelopment.at(i) = tolower(inputDevelopment.at(i));
-
+        return true;
     }
-}
-bool Service::isAddComputerValid(string name, string yearBuilt, string type, string development)
-{
-    bool checkIfNameIsAlreadyInDataBase = true;
-    bool checkName = false;
-    bool checkYearBuilt = false;
-    bool checkType = false;
-    bool checkDevelopment = false;
 
-    if(_dAccess.isComputerNameAlreadyInDatabase(name) == true)
+    return false;
+}
+bool Service::isAddComputerNameValid(Computer newComputer)
+{
+    bool check1 = false;
+    bool check2 = false;
+
+    string name = newComputer.getName();
+
+    if(!_dAccess.isComputerNameAlreadyInDatabase(name))
     {
-        checkIfNameIsAlreadyInDataBase = false;
+        check1 = true;
     }
 
     if(name.length() > 0)
     {
-        checkName = true;
+        check2 = true;
     }
 
-    if(atoi(yearBuilt.c_str()) <= YEARTODAY && atoi(yearBuilt.c_str()) > 0)
-    {
-        checkYearBuilt = true;
-    }
-
-    if(type.length() > 6)
-    {
-        //Switch to lower case to check if input matches the correct string.
-        for(unsigned int i = 0; i < type.size(); i++)
-        {
-            type.at(i) = tolower(type.at(i));
-        }
-
-        if(type == "electronic" || type == "mechanical" || type == "electronic/mechanical" || type == "transistor" || type == "microcomputer" || type == "ternary")
-        {
-            checkType = true;
-        }
-    }
-
-    if(development.length() > 7)
-    {
-        for(unsigned int i = 0; i < development.size(); i++)
-        {
-            development.at(i) = tolower(development.at(i));
-        }
-
-        if(development == "developed" || development == "original")
-        {
-            checkDevelopment = true;
-        }
-    }
-
-    return (checkIfNameIsAlreadyInDataBase && checkName && checkYearBuilt && checkType && checkDevelopment);
-
+    return(check1 && check2);
 }
+bool Service::isAddComputerTypeValid(Computer newComputer)
+{
+    string type = newComputer.getType();
+
+    if(type.length() > 0)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+
 

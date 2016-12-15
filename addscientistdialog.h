@@ -24,6 +24,8 @@ private slots:
 
     void on_cancel_add_scientist_window_clicked();
 
+    void on_pushButton_3_clicked();
+
 private:
     void clearAddScientist();
     Ui::AddScientistDialog *ui;

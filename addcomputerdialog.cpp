@@ -1,8 +1,11 @@
 #include "addcomputerdialog.h"
 #include "ui_addcomputerdialog.h"
-
+#include "service.h"
+#include "computer.h"
+#include "dataaccess.h"
 
 using namespace std;
+
 
 addComputerDialog::addComputerDialog(QWidget *parent) :
     QDialog(parent),
@@ -41,36 +44,45 @@ void addComputerDialog::on_add_Photo_computer_Button_clicked()
 
 void addComputerDialog::on_pushButton_add_computer_clicked()
 {
-    QString computerName = ui->computer_Input_Name->text();
-    QString computerYearBuilt = ui->computer_Input_Year_Built->text();
-    QString computerDevelopment = ui->computer_Input_Development->text();
-    QString computerInfo = ui->computer_Add_Info->text();
-    QString computerType = ui->computer_Input_Type->text();
+    Computer newComputer;
 
-    if (computerName.isEmpty())
+    newComputer.setName((ui->computer_Input_Name->text()).toStdString());
+    newComputer.setYearBuilt((ui->computer_Input_Year_Built->text()).toInt());
+    string development;
+    if(ui->radioButton_if_developed->isChecked())
     {
-        QMessageBox::critical (this, "Error", "The Name Cannot Be Empty");
-        return;
-    }
-    else if (computerYearBuilt.isEmpty())
-    {
-        QMessageBox::critical (this, "Error", "The Building Year Cannot Be Empty");
-        return;
-    }
-    else if (computerDevelopment.isEmpty())
-    {
-        QMessageBox::critical (this, "Error", "The Development Cannot Be Empty");
-        return;
-    }
-    else if (computerType.isEmpty())
-    {
-        QMessageBox::critical (this, "Error", "The Type Cannot Be Empty");
-        return;
+        development = "Developed";
     }
     else
     {
-        //ath hvort tölvan er til í gagnagrunninum ef ekki adda upplýsingunum
+        development = "Original";
+    }
+    newComputer.setDevelopment(development);
+    newComputer.setType((ui->computer_Input_Type->text()).toStdString());
+    newComputer.setComputerInfo((ui->computer_Add_Info->text()).toStdString());
+
+
+    if(!_service.isAddComputerNameValid(newComputer))
+    {
+        QMessageBox::critical (this, "Error", "Name is not valid!");
         return;
     }
+    else if(!_service.isAddComputerYearBuiltValid(newComputer))
+    {
+        QMessageBox::critical (this, "Error", "Year built is not valid!");
+        return;
+    }
+
+    _service.fixAddComputerType(newComputer);
+
+    if(!_service.isAddComputerTypeValid(newComputer))
+    {
+        QMessageBox::critical (this, "Error", "Type of computer is not valid!");
+        return;
+    }
+
+        QMessageBox::critical (this, "Computer was added!", "Computer was added!");
+        _service.addComputerToData(newComputer);
+        this->close();
 }
 

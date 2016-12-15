@@ -6,139 +6,92 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
-    <height>406</height>
+    <width>700</width>
+    <height>443</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Info about scientist</string>
   </property>
-  <widget class="QTableWidget" name="scientist_data">
+  <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>291</y>
+     <x>10</x>
+     <y>230</y>
      <width>261</width>
-     <height>91</height>
+     <height>21</height>
     </rect>
    </property>
-   <property name="showGrid">
-    <bool>false</bool>
+   <property name="text">
+    <string>Related computers</string>
    </property>
-   <property name="gridStyle">
-    <enum>Qt::NoPen</enum>
+  </widget>
+  <widget class="QTableWidget" name="info_related_computers">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>260</y>
+     <width>351</width>
+     <height>151</height>
+    </rect>
    </property>
    <attribute name="horizontalHeaderVisible">
     <bool>false</bool>
    </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>350</number>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="verticalHeaderDefaultSectionSize">
+    <number>28</number>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>Name</string>
+    </property>
+   </column>
   </widget>
-  <widget class="QLineEdit" name="info_display_name">
+  <widget class="QTextEdit" name="info_scientist_info">
    <property name="geometry">
     <rect>
      <x>380</x>
-     <y>30</y>
-     <width>161</width>
-     <height>24</height>
+     <y>50</y>
+     <width>211</width>
+     <height>211</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="info_display_year_of_birth">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>90</y>
-     <width>161</width>
-     <height>24</height>
-    </rect>
+   <property name="acceptRichText">
+    <bool>false</bool>
    </property>
-  </widget>
-  <widget class="QLineEdit" name="info_display_year_of_death">
-   <property name="geometry">
-    <rect>
-     <x>390</x>
-     <y>140</y>
-     <width>161</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="info_display_gender">
-   <property name="geometry">
-    <rect>
-     <x>380</x>
-     <y>180</y>
-     <width>171</width>
-     <height>24</height>
-    </rect>
+   <property name="textInteractionFlags">
+    <set>Qt::TextSelectableByMouse</set>
    </property>
   </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>80</y>
-     <width>258</width>
-     <height>359</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QLabel" name="scientist_info">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="scientist_relation">
-      <property name="text">
-       <string>Tenglsatafla</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="browse_image_clicked">
-      <property name="text">
-       <string>IMAGE</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_image">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="edit_scientist">
-      <property name="text">
-       <string>EDIT</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>20</y>
-     <width>157</width>
-     <height>192</height>
+     <y>10</y>
+     <width>141</width>
+     <height>211</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Name:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Gender:</string>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_2">
@@ -155,17 +108,70 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Gender:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Information</string>
+      </property>
+     </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>10</y>
+     <width>211</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QLineEdit" name="info_display_name">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="info_display_gender">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="info_display_year_of_birth">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="info_display_year_of_death">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

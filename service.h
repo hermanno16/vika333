@@ -57,13 +57,16 @@ public:
     bool isYearOfDeathOfScientistValid(string yearOfBirth);
     bool isAddComputerValid(string name, string yearBuilt, string type, string development);
     void addScientistToData(Scientist newScientist);
-    void addComputerToData(string inputName, string inputYearBuilt, string inputType, string inputDevelopment);
+    void addComputerToData(Computer newComputer);
     bool inputNameValid(string input);
     void fixInputNameScientist(Scientist& newScientist);
     void fixInputGenderScientist(string& inputGender);
     void fixInputYearOfDeath(Scientist &newScientist);
-    void fixInputTypeComputer(string& inputType);
-    void fixInputDevelopmentComputer(string& inputDevelopment);
+
+    void fixAddComputerType(Computer& newComputer);
+    bool isAddComputerYearBuiltValid(Computer newComputer);
+    bool isAddComputerNameValid(Computer newComputer);
+    bool isAddComputerTypeValid(Computer newComputer);
     //--Open database--//
     void openDataBase();
     void closeDataBase();

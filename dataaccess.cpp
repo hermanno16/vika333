@@ -219,27 +219,19 @@ void DataAccess::addScientistToDataBase(Scientist newScientist)
 bool DataAccess::addScientistToComputer(string scientistName, string computerName)
 {
     bool existCheck = false;
+    int ID, Cid;
 
-    vector<Computer> allComputers = getAllComputersAtoZ();
-    vector<Scientist> allScientists = getAllScientistsAtoZ();
-
-    int ID;
-    int Cid;
-
-    for(unsigned int i = 0; i < allComputers.size(); i++)
+    vector<Scientist> theScientist = searchForScientists(scientistName);
+    if(theScientist.size()!=0)
     {
-        if(allComputers[i].getName() == computerName)
-        {
-            int Cid = allComputers[i].getId();
-        }
+        ID = theScientist[0].getID();
     }
-    for(unsigned int j = 0; j < allScientists.size(); j++)
+    vector<Computer> theComputer = searchForComputers(computerName);
+    if(theComputer.size()!=0)
     {
-        if(allScientists[j].getName() == scientistName)
-        {
-            int ID = allScientists[j].getID();
-        }
+        Cid = theComputer[0].getId();
     }
+
 
     vector<Scientist> relationCheck = connectComputerToScientist(Cid); // Checks if there are results of realation to a computer.
     if(relationCheck.size() == 0)
@@ -490,7 +482,9 @@ vector<Scientist> DataAccess::connectComputerToScientist(int idNumber)
 
     QSqlQuery query;
 
-    query.prepare("SELECT * FROM Scientists, ConnectionTable WHERE Scientists.ID = ConnectionTable.ID AND ConnectionTable.Cid =  (:something)");
+    query.prepare("SELECT * FROM Scientists, ConnectionTable "
+                  "WHERE Scientists.ID = ConnectionTable.ID "
+                  "AND ConnectionTable.Cid =  (:something)");
     query.bindValue(":something", idNumber);
     query.exec();
 
@@ -524,7 +518,9 @@ vector<Computer> DataAccess::connectScientistToComputer(int idNumber)
 
     QSqlQuery query;
 
-    query.prepare("SELECT * FROM Computers, ConnectionTable WHERE Computers.Cid = ConnectionTable.Cid AND ConnectionTable.ID = (:something)");
+    query.prepare("SELECT * FROM Computers, ConnectionTable "
+                  "WHERE Computers.Cid = ConnectionTable.Cid "
+                  "AND ConnectionTable.ID = (:something)");
     query.bindValue(":something", idNumber);
     query.exec();
 

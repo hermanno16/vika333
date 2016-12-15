@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>671</height>
+    <width>788</width>
+    <height>659</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -130,8 +130,11 @@
       <property name="editTriggers">
        <set>QAbstractItemView::NoEditTriggers</set>
       </property>
+      <property name="selectionMode">
+       <enum>QAbstractItemView::SingleSelection</enum>
+      </property>
       <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
+       <enum>QAbstractItemView::SelectItems</enum>
       </property>
       <property name="showGrid">
        <bool>false</bool>

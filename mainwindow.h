@@ -5,6 +5,7 @@
 #include "service.h"
 //#include "addscientistwindow.h"
 #include "computer.h"
+
 #include <QMainWindow>
 
 using namespace std;
@@ -23,16 +24,27 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_row_clicked();
 
     void on_search_box_textChanged();
+
+    void on_pushButton_clicked();
+
     void on_button_add_scientist_clicked();
+
     void on_button_scientist_info_clicked();
+
+    void on_dropdown_what_to_look_at_currentTextChanged(const QString &arg1);
+
     void on_search_box_computer_textChanged(const QString &arg1);
+
     void on_button_add_computer_clicked();
+
     void on_button_info_computer_clicked();
+
     void on_button_scientist_remove_clicked();
+
     void on_scientist_table_clicked(const QModelIndex &index);
-    void on_button_scientist_edit_clicked();
 
 private:
     void refreshTable();

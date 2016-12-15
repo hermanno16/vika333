@@ -5,7 +5,6 @@
 #include "addscientistdialog.h"
 #include "scientistinfodialog.h"
 #include "addcomputerdialog.h"
-#include "scientisteditdialog.h"
 #include <QModelIndex>
 
 using namespace std;
@@ -17,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     refreshTable();
+
 }
 
 MainWindow::~MainWindow()
@@ -71,7 +71,10 @@ void MainWindow::displayScientists(vector<Scientist> scientists)
 
     currentlyDisplayedScientists = scientists;
 }
-
+void MainWindow::on_row_clicked()
+{
+    //TODO -- klikka á nafn á listanum, fá upp infoið
+}
 void MainWindow::on_search_box_textChanged()
 {
     string userInput = ui->search_box->text().toStdString();
@@ -80,6 +83,13 @@ void MainWindow::on_search_box_textChanged()
     displayScientists(scientists);
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    /*
+    AddScientistDialog addStudentDialog;
+    addStudentDialog.exec();
+    */
+}
 
 void MainWindow::on_button_add_scientist_clicked()
 {
@@ -122,7 +132,10 @@ void MainWindow::displayComputers(vector<Computer> computers)
         ui->computer_table->setItem(row, 4, new QTableWidgetItem(development));
     }
 }
+void MainWindow::on_dropdown_what_to_look_at_currentTextChanged(const QString &arg1)
+{
 
+}
 
 void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
 {
@@ -166,14 +179,15 @@ void MainWindow::on_button_scientist_info_clicked()
 
     int idOfSelectedScientist = currentlySelectedScientist.getID();
 
-
-
     ScientistInfoDialog scientistInfoDialog;
 
     scientistInfoDialog.displayInfo(currentlySelectedScientist.getName(),
                                     currentlySelectedScientist.getGender(),
                                     currentlySelectedScientist.getYearOfBirth(),
-                                    currentlySelectedScientist.getYearOfDeath());
+                                    currentlySelectedScientist.getYearOfDeath(),
+                                    currentlySelectedScientist.getScientistInfo());
+
+    scientistInfoDialog.relatedComputers(idOfSelectedScientist);
 
     scientistInfoDialog.exec();
 }
@@ -185,22 +199,4 @@ void MainWindow::on_scientist_table_clicked(const QModelIndex &index)
     ui->button_scientist_info->setEnabled(true);
     ui->button_scientist_edit->setEnabled(true);
 }
-
-
-void MainWindow::on_button_scientist_edit_clicked()
-{
-    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
-    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
-    int idOfSelectedScientist = currentlySelectedScientist.getID();
-
-    scientistEditDialog scientisteditDialog;
-    scientisteditDialog.displayInfo(currentlySelectedScientist.getName(),
-                                    currentlySelectedScientist.getGender(),
-                                    currentlySelectedScientist.getYearOfBirth(),
-                                    currentlySelectedScientist.getYearOfDeath());
-
-    scientisteditDialog.exec();
-    refreshTable();
-}
-
 

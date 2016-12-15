@@ -2,13 +2,14 @@
 using namespace std;
 
 //--Constructors--//
-Scientist::Scientist(int ID, string name, string gender, int yearOfBirth, string yearOfDeath)
+Scientist::Scientist(int ID, string name, string gender, int yearOfBirth, string yearOfDeath, string scientistInfo)
 {
     _id = ID;
     _name = name;
     _gender = gender;
     _yearOfBirth = yearOfBirth;
     _yearOfDeath = yearOfDeath;
+    _scientistInfo = scientistInfo;
 }
 //--Get funcitons--//
 int Scientist::getID() const
@@ -31,6 +32,10 @@ string Scientist::getYearOfDeath() const
 {
     return _yearOfDeath;
 }
+string Scientist::getScientistInfo() const
+{
+    return _scientistInfo;
+}
 //--Set functions--//
 void Scientist::setID(int ID)
 {
@@ -51,4 +56,8 @@ void Scientist::setYearOfBirth(int yearOfBirth)
 void Scientist::setYearOfDeath(string yearOfDeath)
 {
     _yearOfDeath = yearOfDeath;
+}
+void Scientist::setScientistInfo(string scientistInfo)
+{
+    _scientistInfo = scientistInfo;
 }

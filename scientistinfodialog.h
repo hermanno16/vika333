@@ -16,7 +16,8 @@ class ScientistInfoDialog : public QDialog
 public:
     explicit ScientistInfoDialog(QWidget *parent = 0);
     ~ScientistInfoDialog();
-    void displayInfo(string name, string gender, int yearOfBirth, string yearOfDeath);
+    void displayInfo(string name, string gender, int yearOfBirth, string yearOfDeath, string scientistInfo);
+    void relatedComputers(int id);
 private slots:
  //   void on_button_browse_image_clicked();
  //   void on_button_edit_scientist_clicked;

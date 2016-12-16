@@ -173,8 +173,16 @@ void MainWindow::on_button_scientist_remove_clicked()
 
     Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
 
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
 
-    _service.removeScientistFromDataBase(currentlySelectedScientist.getID());
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+        _service.removeScientistFromDataBase(currentlySelectedScientist.getID());
+    }
 
     refreshTable();
 }
@@ -239,7 +247,16 @@ void MainWindow::on_button_computer_remove_clicked()
 
     Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
 
-    _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+         _service.removeComputerFromDataBase(currentlySelectedComputer.getId());
+    }
 
     refreshTable();
 }

@@ -85,8 +85,17 @@ void addComputerDialog::on_pushButton_add_computer_clicked()
         return;
     }
 
-        QMessageBox::critical (this, "Computer was added!", "Computer was added!");
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
         _service.addComputerToData(newComputer);
-        this->close();
+    }
+
+  this->close();
 }
 

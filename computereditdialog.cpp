@@ -1,6 +1,7 @@
 #include "computereditdialog.h"
 #include "ui_computereditdialog.h"
 #include "computer.h"
+#include <QMessageBox>
 
 
 ComputerEditDialog::ComputerEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::ComputerEditDialog)
@@ -54,9 +55,36 @@ void ComputerEditDialog::on_pushButton_save_computer_clicked()
     updatedComputer.setComputerInfo((ui->computer_edit_Info->text()).toStdString());
     updatedComputer.setId(_idOfCurrentComputer);
 
-    _service.updateComputerInDataBase(updatedComputer);
+    if(!_service.isAddComputerNameValid(updatedComputer))
+    {
+        QMessageBox::critical (this, "Error", "Name is not valid!");
+        return;
+    }
+    else if(!(updatedComputer.getYearBuilt() > 0))
+    {
+        QMessageBox::critical (this, "Error", "Year built is not valid!");
+        return;
+    }
 
-    this->close();
+    _service.fixAddComputerType(updatedComputer);
+
+    if(!_service.isAddComputerTypeValid(updatedComputer))
+    {
+        QMessageBox::critical (this, "Error", "Type of computer is not valid!");
+        return;
+    }
+
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+        _service.updateComputerInDataBase(updatedComputer);
+        this->close();
+    }
 }
 void ComputerEditDialog::on_cancel_button_clicked()
 {

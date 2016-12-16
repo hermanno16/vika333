@@ -2,6 +2,7 @@
 #include "ui_addrelation.h"
 #include <string>
 #include "service.h"
+#include <QMessageBox>
 
 using namespace std;
 
@@ -21,10 +22,19 @@ void AddRelation::on_ok_clicked()
     string scientistName = ui->scientist_input->toPlainText().toStdString();
     string computerName = ui->computer_input->toPlainText().toStdString();
 
-    bool success = _service.addRelation(scientistName, computerName);
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
 
-    if(success)
+    if(answer == QMessageBox::No)
     {
-    this->close();
+        return;
+    }
+    else
+    {
+        bool success = _service.addRelation(scientistName, computerName);
+
+        if(success)
+        {
+           this->close();
+        }
     }
 }

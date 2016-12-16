@@ -82,10 +82,19 @@ void AddScientistDialog::on_pushButton_add_scientist_clicked()
     }
 
 
-     _service.addScientistToData(newScientist);
+
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
+
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+        _service.addScientistToData(newScientist);
+    }
 
 
-    //If scientist was added. Window will close.
     this->close();
 }
 

@@ -90,15 +90,20 @@ void scientistEditDialog::on_pushButton_save_update_scientist_clicked()
         return;
     }
 
-    _service.fixInputNameScientist(updatedScientist);
+    int answer = QMessageBox::question(this, "Confirm", "Are you sure?");
 
+    if(answer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+        _service.fixInputNameScientist(updatedScientist);
+        _service.updateScientistInDataBase(updatedScientist);
+        this->close();
 
-
-    _service.updateScientistInDataBase(updatedScientist);
-
-    this->close();
+    }
 }
-
 
 void scientistEditDialog::on_cancel_edit_window_clicked()
 {

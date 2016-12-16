@@ -19,11 +19,11 @@ AddRelation::~AddRelation()
 void AddRelation::on_ok_clicked()
 {
     string scientistName = ui->scientist_input->toPlainText().toStdString();
-    string computerName = ui->scientist_input->toPlainText().toStdString();
+    string computerName = ui->computer_input->toPlainText().toStdString();
 
     bool success = _service.addRelation(scientistName, computerName);
 
-    if(success = true)
+    if(success)
     {
     this->close();
     }

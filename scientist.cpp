@@ -2,7 +2,12 @@
 using namespace std;
 
 //--Constructors--//
-Scientist::Scientist(int ID, string name, string gender, int yearOfBirth, string yearOfDeath, string scientistInfo)
+Scientist::Scientist(int ID,
+                     string name,
+                     string gender,
+                     int yearOfBirth,
+                     string yearOfDeath,
+                     string scientistInfo)
 {
     _id = ID;
     _name = name;

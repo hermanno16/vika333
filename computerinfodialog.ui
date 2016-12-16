@@ -6,116 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>511</width>
-    <height>441</height>
+    <width>709</width>
+    <height>538</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QRadioButton" name="radioButton_display_if_developed">
-   <property name="geometry">
-    <rect>
-     <x>148</x>
-     <y>70</y>
-     <width>97</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Developed</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_computer_Type">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>100</y>
-     <width>31</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Type :</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="computer_display_Info">
-   <property name="geometry">
-    <rect>
-     <x>118</x>
-     <y>150</y>
-     <width>251</width>
-     <height>141</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="lable_Computer_Development">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>70</y>
-     <width>91</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Development :</string>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="radioButton_display_if_original">
-   <property name="geometry">
-    <rect>
-     <x>248</x>
-     <y>70</y>
-     <width>97</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Original</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_computer_Year_Built">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>41</y>
-     <width>91</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Year Built :</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="computer_display_Type">
-   <property name="geometry">
-    <rect>
-     <x>138</x>
-     <y>100</y>
-     <width>251</width>
-     <height>24</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_comptuer_name">
-   <property name="geometry">
-    <rect>
-     <x>21</x>
-     <y>13</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Name:</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="cancel_button">
    <property name="geometry">
     <rect>
-     <x>8</x>
-     <y>350</y>
+     <x>110</x>
+     <y>360</y>
      <width>211</width>
      <height>31</height>
     </rect>
@@ -127,8 +29,8 @@
   <widget class="QLabel" name="label_computer_photo">
    <property name="geometry">
     <rect>
-     <x>388</x>
-     <y>170</y>
+     <x>420</x>
+     <y>300</y>
      <width>91</width>
      <height>121</height>
     </rect>
@@ -137,40 +39,155 @@
     <string>Photo</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="computer_display_Year_Built">
+  <widget class="QLabel" name="label_related_scientists">
    <property name="geometry">
     <rect>
-     <x>138</x>
+     <x>8</x>
+     <y>350</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Cancel</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon" stdset="0">
+    <iconset>
+     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</iconset>
+   </property>
+   <property name="shortcut" stdset="0">
+    <string>Ctrl+C</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="info_related_scientists">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
      <y>40</y>
-     <width>251</width>
-     <height>24</height>
+     <width>231</width>
+     <height>201</height>
     </rect>
    </property>
+   <property name="columnCount">
+    <number>1</number>
+   </property>
+   <attribute name="horizontalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="horizontalHeaderDefaultSectionSize">
+    <number>200</number>
+   </attribute>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
+   <column/>
   </widget>
-  <widget class="QLineEdit" name="computer_display_Name">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>138</x>
+     <x>10</x>
      <y>10</y>
-     <width>251</width>
-     <height>21</height>
+     <width>111</width>
+     <height>141</height>
     </rect>
    </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_comptuer_name">
+      <property name="text">
+       <string>Name:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_computer_Year_Built">
+      <property name="text">
+       <string>Year Built :</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="lable_Computer_Development">
+      <property name="text">
+       <string>Development :</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_computer_Type">
+      <property name="text">
+       <string>Type :</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
-  <widget class="QLabel" name="label_add_computer_info">
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>118</x>
+     <y>10</y>
+     <width>281</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QLineEdit" name="computer_display_Name"/>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="computer_display_Year_Built"/>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QRadioButton" name="radioButton_display_if_developed">
+       <property name="text">
+        <string>Developed</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_display_if_original">
+       <property name="text">
+        <string>Original</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="computer_display_Type"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QTextEdit" name="computer_display_info">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>170</y>
-     <width>71</width>
-     <height>16</height>
+     <y>190</y>
+     <width>231</width>
+     <height>111</height>
     </rect>
    </property>
-   <property name="text">
-    <string> info:</string>
+   <property name="acceptRichText">
+    <bool>false</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::TextSelectableByMouse</set>
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>computer_display_Name</tabstop>
+  <tabstop>computer_display_Year_Built</tabstop>
+  <tabstop>radioButton_display_if_developed</tabstop>
+  <tabstop>radioButton_display_if_original</tabstop>
+  <tabstop>computer_display_Type</tabstop>
+  <tabstop>cancel_button</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

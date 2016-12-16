@@ -3,23 +3,18 @@
 #include "computer.h"
 
 
-ComputerEditDialog::ComputerEditDialog(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ComputerEditDialog)
+ComputerEditDialog::ComputerEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::ComputerEditDialog)
 {
     ui->setupUi(this);
 }
-
 ComputerEditDialog::~ComputerEditDialog()
 {
     delete ui;
 }
-
 void ComputerEditDialog::setIDofCurrentComputer(int id)
 {
     _idOfCurrentComputer = id;
 }
-
 void ComputerEditDialog::displayInfo(string name, string type, int yearBuilt, string development, string computerInfo)
 {
     ui->computer_edit_Name->setText(QString::fromStdString(name));
@@ -37,11 +32,6 @@ void ComputerEditDialog::displayInfo(string name, string type, int yearBuilt, st
 
     ui->computer_edit_Info->setText(QString::fromStdString(computerInfo));
 }
-
-
-
-
-
 void ComputerEditDialog::on_pushButton_save_computer_clicked()
 {
     Computer updatedComputer;
@@ -66,13 +56,8 @@ void ComputerEditDialog::on_pushButton_save_computer_clicked()
 
     _service.updateComputerInDataBase(updatedComputer);
 
-
-
     this->close();
-
-
 }
-
 void ComputerEditDialog::on_cancel_button_clicked()
 {
     this->close();

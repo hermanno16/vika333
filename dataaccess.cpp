@@ -477,6 +477,39 @@ vector<Computer> DataAccess::searchForComputers(string searchString)
 
     return allComputers;
 }
+vector<Computer> DataAccess::searchForComputerID(int searchID)
+{
+    vector<Computer> aComputer;
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM Computers WHERE Cid = (:something)");
+    query.bindValue(":something", searchID);
+    query.exec();
+
+    while(query.next())
+    {
+        int id = query.value(query.record().indexOf("Cid")).toUInt();
+        QString name = query.value(query.record().indexOf("ComputerName")).toString();
+        QString type = query.value(query.record().indexOf("Type")).toString();
+        int yearBuilt = query.value(query.record().indexOf("YearBuilt")).toUInt();
+        QString development = query.value(query.record().indexOf("Development")).toString();
+        QString information = query.value(query.record().indexOf("Information")).toString();
+
+        Computer newComputer(
+                    id,
+                    name.toStdString(),
+                    type.toStdString(),
+                    yearBuilt,
+                    development.toStdString(),
+                    information.toStdString()
+                    );
+
+        aComputer.push_back(newComputer);
+    }
+
+    return aComputer;
+}
+
 string DataAccess::getComputerName(int idNumber)
 {
     int id = idNumber;

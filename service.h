@@ -42,6 +42,7 @@ public:
     vector<Computer> getAllDevelopmentAndOriginalComputers(string development);
     //Computer Search functions
     vector<Computer> searchForComputers(string searchstring);
+    Computer searchForComputerID(int searchID);
     string getComputerName(int idNumber);
     //Computer - other functions
     void removeComputerFromDataBase(int idOfComputer);

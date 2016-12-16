@@ -104,6 +104,13 @@ vector<Scientist> Service::searchForScientists(string searchString)
     return allScientists;
 }
 
+Scientist Service::searchForScientistID(int searchID)
+{
+    vector<Scientist> aScientist = _dAccess.searchForScientistID(searchID);
+
+    return aScientist[0];
+}
+
 vector<Scientist> Service::getScientistsByGenderAtoZ(char gender)
 {
     vector<Scientist> genderScientists;
@@ -272,7 +279,12 @@ vector<Computer> Service::searchForComputers(string searchString)
     return allComputers;
 
 }
+Computer Service::searchForComputerID(int searchID)
+{
+    vector<Computer> aComputer = _dAccess.searchForComputerID(searchID);
 
+    return aComputer[0];
+}
 string Service::getComputerName(int idNumber)
 {
     string aComputer;

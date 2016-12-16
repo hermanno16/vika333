@@ -135,6 +135,7 @@ void MainWindow::on_search_box_computer_textChanged(const QString &arg1)
     string userInput = ui->search_box_computer->text().toStdString();
 
     vector<Computer> computers = _service.searchForComputers(userInput);
+
     displayComputers(computers);
 }
 void MainWindow::on_button_add_computer_clicked()
@@ -143,17 +144,26 @@ void MainWindow::on_button_add_computer_clicked()
     int addComputerReturnValue = AddComputerDialog.exec();
     refreshTable();
 }
-void MainWindow::on_button_info_computer_clicked()
+int MainWindow::getComputerID() const
 {
-    int currentlySelectedComputerIndex = ui->computer_table->currentIndex().row();
+    int row = ui->computer_table->currentRow();
 
-    Computer currentlySelectedComputer = currentlyDisplayedComputers.at(currentlySelectedComputerIndex);
+    if (row != -1)
+    {
+        return ui->computer_table->item(row,0)->text().toInt();
+    }
 
-    int idOfSelectedComputer = currentlySelectedComputer.getId();
+    return -1;
+}
+void MainWindow::on_button_info_computer_clicked()
+{  
+    int computerID = getComputerID();
+
+    Computer currentlySelectedComputer = _service.searchForComputerID(computerID);
 
     ComputerInfoDialog computerInfoDialog;
 
-    computerInfoDialog.relatedScientists(idOfSelectedComputer);
+    computerInfoDialog.relatedScientists(computerID);
 
     computerInfoDialog.displayInfo(currentlySelectedComputer.getName(),
                                    currentlySelectedComputer.getType(),
@@ -186,17 +196,26 @@ void MainWindow::on_button_scientist_remove_clicked()
 
     refreshTable();
 }
+int MainWindow::getScientistID() const
+{
+    int row = ui->scientist_table->currentRow();
+
+    if (row != -1)
+    {
+        return ui->scientist_table->item(row,0)->text().toInt();
+    }
+
+    return -1;
+}
 void MainWindow::on_button_scientist_info_clicked()
 {
-    int currentlySelectedScientistIndex = ui->scientist_table->currentIndex().row();
+    int scientistID = getScientistID();
 
-    Scientist currentlySelectedScientist = currentlyDisplayedScientists.at(currentlySelectedScientistIndex);
-
-    int idOfSelectedScientist = currentlySelectedScientist.getID();
+    Scientist currentlySelectedScientist = _service.searchForScientistID(scientistID);
 
     ScientistInfoDialog scientistInfoDialog;
 
-    scientistInfoDialog.relatedComputers(idOfSelectedScientist);
+    scientistInfoDialog.relatedComputers(scientistID);
 
     scientistInfoDialog.displayInfo(currentlySelectedScientist.getName(),
                                     currentlySelectedScientist.getGender(),
@@ -235,6 +254,12 @@ void MainWindow::on_button_scientist_edit_clicked()
 }
 
 void MainWindow::on_add_relation_clicked()
+{
+    AddRelation addRelation;
+
+    addRelation.exec();
+}
+void MainWindow::on_add_relation_2_clicked()
 {
     AddRelation addRelation;
 
@@ -284,3 +309,4 @@ void MainWindow::on_button_computer_edit_clicked()
     computerEditDialog.exec();
     refreshTable();
 }
+

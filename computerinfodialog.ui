@@ -42,24 +42,14 @@
   <widget class="QLabel" name="label_related_scientists">
    <property name="geometry">
     <rect>
-     <x>8</x>
-     <y>350</y>
-     <width>191</width>
-     <height>31</height>
+     <x>410</x>
+     <y>10</y>
+     <width>171</width>
+     <height>21</height>
     </rect>
    </property>
-   <property name="toolTip">
-    <string>Cancel</string>
-   </property>
    <property name="text">
-    <string/>
-   </property>
-   <property name="icon" stdset="0">
-    <iconset>
-     <normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</normaloff>../build-VLN1-3-Desktop_Qt_5_7_0_MSVC2015_64bit-Debug/icons/cancel.ico.ico</iconset>
-   </property>
-   <property name="shortcut" stdset="0">
-    <string>Ctrl+C</string>
+    <string>Related scientists:</string>
    </property>
   </widget>
   <widget class="QTableWidget" name="info_related_scientists">
@@ -163,7 +153,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QTextEdit" name="computer_display_info">
+  <widget class="QTextEdit" name="info_computer_info">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -180,14 +170,6 @@
    </property>
   </widget>
  </widget>
- <tabstops>
-  <tabstop>computer_display_Name</tabstop>
-  <tabstop>computer_display_Year_Built</tabstop>
-  <tabstop>radioButton_display_if_developed</tabstop>
-  <tabstop>radioButton_display_if_original</tabstop>
-  <tabstop>computer_display_Type</tabstop>
-  <tabstop>cancel_button</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>

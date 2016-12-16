@@ -37,7 +37,9 @@ private slots:
     void on_button_computer_remove_clicked();
     void on_computer_table_clicked(const QModelIndex &index);
     void on_button_computer_edit_clicked();
-
+    void on_add_relation_2_clicked();
+    int getScientistID() const;
+    int getComputerID() const;
 private:
     void refreshTable();
     void displayAllScientists();

@@ -68,6 +68,7 @@ public:
     vector<Computer> getAllComputersDevelopedAndOriginal();
     //--Computer search functions
     vector<Computer> searchForComputers(string searchstring);
+    vector<Computer> searchForComputerID(int searchID);
     string getComputerName(int idNumber);
     string getScientistName(int idNumber);
     //--Computer other functions--//

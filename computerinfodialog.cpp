@@ -14,15 +14,12 @@ ComputerInfoDialog::~ComputerInfoDialog()
     delete ui;
 }
 
-void ComputerInfoDialog::displayInfo(string name,
-                                     string type,
-                                     int yearBuilt,
-                                     string development,
-                                     string computerInfo)
+void ComputerInfoDialog::displayInfo(string name, string type, int yearBuilt, string development, string computerInfo)
 {
     ui->computer_display_Name->setText(QString::fromStdString(name));
     ui->computer_display_Year_Built->setText(QString::number(yearBuilt));
     ui->computer_display_Type->setText(QString::fromStdString(type));
+
     if(development == "Developed")
     {
         ui->radioButton_display_if_developed->setChecked(true);
@@ -33,7 +30,7 @@ void ComputerInfoDialog::displayInfo(string name,
         ui->radioButton_display_if_original->setChecked(true);
     }
 
-    ui->info_computer_info->insertPlainText(QString::fromStdString(computerInfo));
+    ui->computer_display_info->insertPlainText(QString::fromStdString(computerInfo));
 }
 void ComputerInfoDialog::relatedScientists(int cid)
 {

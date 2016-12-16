@@ -30,6 +30,8 @@ public:
     void openDataBase();
     void closeDataBase();
     //--Scientists--//
+    void updateScientistInDataBase(Scientist updatedScientist);
+    void updateComputerInDataBase(Computer updatedComputer);
     vector<Scientist> getAllScientistInfoFromDataBase(QString queryCommand);
     vector<Scientist> getAllScientistsAtoZ();
     vector<Scientist> getAllScientistsZtoA();

@@ -29,6 +29,7 @@ private slots:
 private:
     Ui::ScientistInfoDialog *ui;
 
+
     Service _service;
 };
 

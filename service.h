@@ -63,11 +63,12 @@ public:
     void fixInputNameScientist(Scientist& newScientist);
     void fixInputGenderScientist(string& inputGender);
     void fixInputYearOfDeath(Scientist &newScientist);
-
+    void updateScientistInDataBase(Scientist updatedScientist);
     void fixAddComputerType(Computer& newComputer);
     bool isAddComputerYearBuiltValid(Computer newComputer);
     bool isAddComputerNameValid(Computer newComputer);
     bool isAddComputerTypeValid(Computer newComputer);
+    void updateComputerInDataBase(Computer updatedComputer);
     //--Open database--//
     void openDataBase();
     void closeDataBase();
